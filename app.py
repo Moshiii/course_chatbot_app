@@ -3,6 +3,7 @@ from flask_login import LoginManager, login_required, login_user, UserMixin
 from requests_oauthlib import OAuth2Session
 import openai
 import os
+import logging
 
 app = Flask(__name__)
 app.secret_key = 'my_secret_key_random_123456789'
@@ -14,6 +15,7 @@ authorization_base_url = 'https://discord.com/api/oauth2/authorize'
 token_url = 'https://discord.com/api/oauth2/token'
 api_base_url = 'https://discord.com/api'
 scope = 'identify email guilds'
+guild_id = '830604066660286464'
 openai.api_key = os.environ['OPENAPI_API_KEY']
 
 class User(UserMixin):
@@ -31,7 +33,7 @@ def load_user(user_id):
 @app.route('/api/discordLogin', methods=['GET'])
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
-    authorization_url, state = discord.authorization_url(authorization_base_url)
+    authorization_url, state = discord.authorization_url(authorization_base_url,guild_id=guild_id)
     return redirect(authorization_url)
 
 # Define an endpoint for discord login callback
@@ -41,11 +43,22 @@ def discord_callback():
     # save the access token and other data as needed
     token = discord.fetch_token(token_url, client_secret=client_secret, authorization_response=request.url)
 
-    # Retrieve the user's information from the OAuth2 provider's API
+    # Store the user's access token in the session for future requests
+    session['token'] = token
+
+    # Get the user's guild memberships from the Discord API
+    guilds = discord.get(api_base_url + '/users/@me/guilds').json()
+    print("get guilds:")
+    print(guilds)
+    if not any(guild['id'] == guild_id for guild in guilds):
+        return 'You are not part of the server, access denied'
+
+    # Retrieve the user's information from the Discord API
     user_info = discord.get(api_base_url + '/users/@me').json()
     user_id = str(user_info['id'])
     user_email = user_info.get('email')
     user_name = user_info.get('username')
+    print("get user_info:")
     print(user_info)
     # Load the user object and log the user in
     user = User(user_id, user_email, user_name)
@@ -58,16 +71,21 @@ def discord_callback():
     # Redirect the user to the protected page
     return redirect(url_for('get_home'))
 
-# Define an endpoint for discord login callback
+# Define an endpoint for home
 @app.route('/', methods=['GET'])
 def get_home():
-
     # Get the user ID from the session and load the user object
     # user_id = session.get('user_id')
     # user = load_user(user_id)
 
     return "this is home page"
 
+# Define an endpoint for error api
+@app.route('/error', methods=['GET'])
+def get_error():
+    return "this is error page"
+
+# Define an endpoint for discord logout
 @app.route('/api/discordLogout')
 @login_required
 def logout():
@@ -78,6 +96,9 @@ def logout():
 @app.route('/api/test', methods=['GET'])
 @login_required
 def test():
+    # Check if the user's access token is in the session
+    if 'token' not in session:
+        return redirect(url_for('get_error'))
     return jsonify({"TEST": "test"})
 
 # Define an endpoint for openai

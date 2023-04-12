@@ -19,4 +19,7 @@ python app.py
 ```
 
 ## App run in local
-eg. http://localhost:5000/api/discordLogin
+login api: http://localhost:5000/api/discordLogin
+test api: https://localhost:5000/api/test
+logout api: http://localhost:5000/api/discordLogout
+home: https://localhost:5000/
