@@ -33,7 +33,7 @@ def load_user(user_id):
 @app.route('/api/discordLogin', methods=['GET'])
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
-    authorization_url, state = discord.authorization_url(authorization_base_url,guild_id=guild_id)
+    authorization_url, state = discord.authorization_url(authorization_base_url)
     return redirect(authorization_url)
 
 # Define an endpoint for discord login callback
