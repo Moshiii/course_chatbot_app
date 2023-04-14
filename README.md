@@ -5,7 +5,7 @@ virtualenv chatbot
 ```
 ## Activate virtual env
 ```
-source chatbot/bin/activate
+source chatbot/Scripts/activate
 ```
 
 ## Install packages
