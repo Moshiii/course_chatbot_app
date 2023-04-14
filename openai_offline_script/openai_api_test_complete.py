@@ -79,21 +79,5 @@ Final Project Report: 10%
 prompt+="hello professor, when is the reading week?"
 
 # Completion does not have conversation context, have to load all given knowledge
-# response = openai.Completion.create(
-#         model="text-curie-001", prompt=prompt, temperature=0.0)
-
-messages=[
-{"role": "system", "content": "You are a helpful assistant."},
-{"role": "user", "content": "Who won the world series in 2020?"},
-{"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-{"role": "user", "content": "Where was it played?"}
-]
-
-response = openai.ChatCompletion.create(
-  model="gpt-3.5-turbo",
-
-)
-# get message from user
-print(response["choices"][0]["message"])
-#  append message to messages
-messages.append({"role": "assistant", "content": response["choices"][0]["text"]})
+response = openai.Completion.create(
+        model="text-curie-001", prompt=prompt, temperature=0.0)
