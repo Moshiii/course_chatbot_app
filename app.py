@@ -19,6 +19,8 @@ api_base_url = 'https://discord.com/api'
 scope = 'identify email guilds'
 guild_id = '830604066660286464'
 openai.api_key = os.environ['OPENAPI_API_KEY']
+#  disable output buffering in Flask
+os.environ['PYTHONUNBUFFERED'] = '1'
 
 class User(UserMixin):
     def __init__(self, id, email, name):
