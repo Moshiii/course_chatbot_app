@@ -33,20 +33,14 @@ def load_user(user_id):
     # Load the user object from the database or other storage
     return User(user_id, session['user_email'], session['user_name'])
 
-# enable CORS is to use Flask's
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
-    return response
-
 # Define an endpoint for discord login
 @app.route('/api/discordLogin', methods=['GET'])
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
     authorization_url, state = discord.authorization_url(authorization_base_url)
-    return redirect(authorization_url)
+    # return redirect(authorization_url)
+    response = jsonify({"auth_url": authorization_url})
+    return response
 
 # Define an endpoint for discord login callback
 @app.route('/api/discordLogin/callback', methods=['GET'])
