@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, redirect, request, url_for, session
 from flask_login import LoginManager, login_required, login_user, UserMixin
+from flask_cors import CORS
 from requests_oauthlib import OAuth2Session
 import openai
 import os
@@ -8,6 +9,7 @@ import logging
 app = Flask(__name__)
 app.secret_key = 'my_secret_key_random_123456789'
 login_manager = LoginManager(app)
+CORS(app)
 # Will defined as env variable
 client_id = '1095151304344608770'
 client_secret = 'FdXo9-KeXPQBpn2M0R3woU0M49usAwrA'
@@ -28,6 +30,14 @@ class User(UserMixin):
 def load_user(user_id):
     # Load the user object from the database or other storage
     return User(user_id, session['user_email'], session['user_name'])
+
+# enable CORS is to use Flask's
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
+    return response
 
 # Define an endpoint for discord login
 @app.route('/api/discordLogin', methods=['GET'])
