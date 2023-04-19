@@ -5,7 +5,7 @@ import openai
 openai.api_key = os.environ['OPENAPI_API_KEY']
 # prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
 
-prompt='this is a syllubus for a fluid dynamics course. please read and answer the following questions.'
+prompt='this is a syllubus for a fluid dynamics course. please read and answer the following questions. Please think carefully'
 prompt+='''
 Course Title: Fluid Dynamics (Summer 2023)
 
@@ -76,8 +76,11 @@ Final Project Presentation: 10%
 Final Project Report: 10%
 '''
 
-prompt+="hello professor, when is the reading week?"
+# prompt+="hello professor, when is the reading week?"
+# prompt+="hello professor, when is the mid term?"
+prompt+="hello professor, when is the first lab?"
 
 # Completion does not have conversation context, have to load all given knowledge
 response = openai.Completion.create(
-        model="text-curie-001", prompt=prompt, temperature=0.0)
+        model="text-davinci-003", prompt=prompt, temperature=0.1,max_tokens=100)
+print(response['choices'][0]['text'])
