@@ -1,21 +1,30 @@
 import os
-
 import openai
 
-openai.api_key = os.environ['OPENAPI_API_KEY']
+openai.api_key = os.environ['OPENAI_API_KEY']
+
+def chat_with_context(user_message,messages):
+    messages.append({"role": "user", "content": user_message})
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+    )
+    answer = response["choices"][0]["message"]["content"]
+    messages.append({"role": "assistant", "content": answer})
+    return answer,messages
 
 messages=[
-{"role": "system", "content": "You are a helpful assistant."},
-{"role": "user", "content": "Who won the world series in 2020?"},
-{"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-{"role": "user", "content": "Where was it played?"}
+{"role": "system", "content": "You are a helpful assistant."}
 ]
 
-response = openai.ChatCompletion.create(
-  model="gpt-3.5-turbo",
 
-)
-# get message from user
-print(response["choices"][0]["message"])
-#  append message to messages
-messages.append({"role": "assistant", "content": response["choices"][0]["text"]})
+question = "Who won the world series in 2020?"
+print(question)
+answer,messages = chat_with_context(question,messages)
+print(answer)
+
+
+question = "Where was it played?"
+print(question)
+answer,messages = chat_with_context(question,messages)
+print(answer)

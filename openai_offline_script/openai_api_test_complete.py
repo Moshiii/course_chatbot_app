@@ -2,7 +2,7 @@ import os
 
 import openai
 
-openai.api_key = os.environ['OPENAPI_API_KEY']
+openai.api_key = os.environ['OPENAI_API_KEY']
 # prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
 
 prompt='this is a syllubus for a fluid dynamics course. please read and answer the following questions. Please think carefully'

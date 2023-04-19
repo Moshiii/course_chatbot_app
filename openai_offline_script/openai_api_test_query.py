@@ -3,7 +3,7 @@ import numpy as np
 import openai
 import json
 
-openai.api_key = os.environ['OPENAPI_API_KEY']
+openai.api_key = os.environ['OPENAI_API_KEY']
 EMBEDDING_MODEL = "text-embedding-ada-002"
 CONTEXT_TOKEN_LIMIT = 3000
 

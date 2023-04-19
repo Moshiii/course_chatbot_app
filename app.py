@@ -18,7 +18,7 @@ token_url = 'https://discord.com/api/oauth2/token'
 api_base_url = 'https://discord.com/api'
 scope = 'identify email guilds'
 guild_id = '830604066660286464'
-openai.api_key = os.environ['OPENAPI_API_KEY']
+openai.api_key = os.environ['OPENAI_API_KEY']
 #  disable output buffering in Flask
 os.environ['PYTHONUNBUFFERED'] = '1'
 
