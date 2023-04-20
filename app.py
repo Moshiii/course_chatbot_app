@@ -71,6 +71,7 @@ def discord_callback():
     login_user(user)
 
     # Store the user's email and name in the session
+    session['user_id'] = user_id
     session['user_email'] = user_email
     session['user_name'] = user_name
 
@@ -80,11 +81,19 @@ def discord_callback():
 # Define an endpoint for home
 @app.route('/', methods=['GET'])
 def get_home():
-    # Get the user ID from the session and load the user object
-    # user_id = session.get('user_id')
-    # user = load_user(user_id)
-
     return "this is home page"
+
+# Define an endpoint for get session
+@app.route('/api/userInfo', methods=['GET'])
+@login_required
+def get_userinfo():
+    user_id = session.get('user_id')
+    user = load_user(user_id)
+    return jsonify({
+        "user_id": user.id,
+        "user_name": user.name,
+        "user_email": user.email
+    })
 
 # Define an endpoint for error api
 @app.route('/error', methods=['GET'])
