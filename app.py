@@ -2,6 +2,7 @@ from flask import Flask, jsonify, redirect, request, url_for, session
 from flask_login import LoginManager, login_required, login_user, UserMixin
 from flask_cors import CORS
 from requests_oauthlib import OAuth2Session
+from dotenv import load_dotenv
 import openai
 import os
 import logging
@@ -10,9 +11,13 @@ app = Flask(__name__)
 app.secret_key = 'my_secret_key_random_123456789'
 login_manager = LoginManager(app)
 CORS(app)
+
+# Load the .env file
+load_dotenv()
+
 # Will defined as env variable
-client_id = '1095151304344608770'
-client_secret = 'FdXo9-KeXPQBpn2M0R3woU0M49usAwrA'
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
 authorization_base_url = 'https://discord.com/api/oauth2/authorize'
 token_url = 'https://discord.com/api/oauth2/token'
 api_base_url = 'https://discord.com/api'

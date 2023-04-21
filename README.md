@@ -12,6 +12,8 @@ source chatbot/Scripts/activate
 ```
 pip3 install -r requirements.txt
 ```
+## Replace OPENAI_API_KEY in .env
+replace OPENAI_API_KEY=${REPLACE_WITH_KEY}
 
 ## Run flask app
 ```
