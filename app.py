@@ -24,6 +24,7 @@ api_base_url = 'https://discord.com/api'
 scope = 'identify email guilds'
 guild_id = '830604066660286464'
 openai.api_key = os.environ['OPENAI_API_KEY']
+front_end_url = os.environ['FRONT_END_URL']
 #  disable output buffering in Flask
 os.environ['PYTHONUNBUFFERED'] = '1'
 
@@ -80,8 +81,10 @@ def discord_callback():
     session['user_email'] = user_email
     session['user_name'] = user_name
 
-    # Redirect the user to the protected page
-    return redirect('https://ec2-44-212-203-117.compute-1.amazonaws.com/chat')
+    chat_url = f"{front_end_url}/chat"
+    print("chat_url:", chat_url)
+    # Redirect the user to the chat page
+    return redirect(f"{front_end_url}/chat")
 
 # Define an endpoint for home
 @app.route('/api/home', methods=['GET'])
@@ -110,7 +113,7 @@ def get_error():
 @login_required
 def logout():
     session.clear()
-    return redirect('/')
+    return redirect(front_end_url)
 
 # Define an endpoint for test
 @app.route('/api/test', methods=['GET'])
