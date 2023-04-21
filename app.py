@@ -81,7 +81,7 @@ def discord_callback():
     session['user_name'] = user_name
 
     # Redirect the user to the protected page
-    return redirect(url_for('get_home'))
+    return redirect('https://ec2-44-212-203-117.compute-1.amazonaws.com/chat')
 
 # Define an endpoint for home
 @app.route('/api/home', methods=['GET'])
