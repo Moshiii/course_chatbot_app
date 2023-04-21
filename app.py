@@ -84,7 +84,7 @@ def discord_callback():
     return redirect(url_for('get_home'))
 
 # Define an endpoint for home
-@app.route('/home', methods=['GET'])
+@app.route('/api/home', methods=['GET'])
 def get_home():
     return "this is home page"
 
