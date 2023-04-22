@@ -99,17 +99,6 @@ def discord_callback():
 def get_home():
     return "this is home page"
 
-# Define an endpoint for get session
-@app.route('/api/token', methods=['POST'])
-@login_required
-def get_userinfo():
-    user_id = session.get('user_id')
-    user = load_user(user_id)
-    return jsonify({
-        "user_id": user.id,
-        "user_name": user.name,
-        "user_email": user.email
-    })
 
 # Define an endpoint for error api
 @app.route('/error', methods=['GET'])
