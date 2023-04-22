@@ -9,7 +9,7 @@ import logging
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-CORS(app)
+CORS(app, origins=[front_end_url])
 
 # Load the .env file
 load_dotenv()
