@@ -91,7 +91,7 @@ def discord_callback():
     # return redirect(f"{front_end_url}/chat")
     response = redirect(f"{front_end_url}/chat")
     response.set_cookie('access_token', value=token['access_token'])
-    response.set_cookie(b'cookie_session', value=session)
+    response.set_cookie('cookie_session', value=bytes(session))
     return response
    
 
