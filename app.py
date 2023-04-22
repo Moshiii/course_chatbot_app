@@ -44,9 +44,9 @@ def load_user(user_id):
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
     authorization_url, state = discord.authorization_url(authorization_base_url)
-    # return redirect(authorization_url)
-    response = jsonify({"auth_url": authorization_url})
-    return response
+    return redirect(authorization_url)
+    # response = jsonify({"auth_url": authorization_url})
+    # return response
 
 # Define an endpoint for discord login callback
 @app.route('/api/discordLogin/callback', methods=['GET'])
@@ -81,12 +81,11 @@ def discord_callback():
     session['user_email'] = user_email
     session['user_name'] = user_name
 
-    # chat_url = f"{front_end_url}/chat"
-    # print("chat_url:", chat_url)
+    chat_url = f"{front_end_url}/chat"
+    print("chat_url:", chat_url)
     # Redirect the user to the chat page
-    # return redirect(f"{front_end_url}/chat")
-    response = jsonify({"session": session})
-    return response
+    return redirect(f"{front_end_url}/chat")
+   
 
 # Define an endpoint for home
 @app.route('/api/home', methods=['GET'])
@@ -94,7 +93,7 @@ def get_home():
     return "this is home page"
 
 # Define an endpoint for get session
-@app.route('/api/userInfo', methods=['GET'])
+@app.route('/api/token', methods=['POST'])
 @login_required
 def get_userinfo():
     user_id = session.get('user_id')
