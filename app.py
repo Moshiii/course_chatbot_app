@@ -27,7 +27,7 @@ front_end_url = os.environ['FRONT_END_URL']
 #  disable output buffering in Flask
 os.environ['PYTHONUNBUFFERED'] = '1'
 
-CORS(app, origins=[front_end_url])
+CORS(app)
 def discord_token_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
@@ -109,8 +109,7 @@ def logout():
                                         'client_id': client_id,
                                         'client_secret': client_secret})
         session.clear()
-    response = redirect(front_end_url)
-    # return redirect(front_end_url)
+    return redirect(front_end_url)
 
 # Define an endpoint for test
 @app.route('/api/test', methods=['GET'])
