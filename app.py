@@ -102,7 +102,9 @@ def logout():
                                         'client_id': client_id,
                                         'client_secret': client_secret})
         session.clear()
-    return redirect(front_end_url)
+    response = redirect(front_end_url)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    # return redirect(front_end_url)
 
 # Define an endpoint for test
 @app.route('/api/test', methods=['GET'])
@@ -117,6 +119,7 @@ def get_openai():
     prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
     response = openai.Completion.create(
         model="text-curie-001", prompt=prompt, temperature=7)
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify({"openai": "test", "response": response})
 
 
