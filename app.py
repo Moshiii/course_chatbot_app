@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, request, url_for, session
+from flask import Flask, jsonify, redirect, request, url_for, session, make_response
 from flask_login import LoginManager, login_required, login_user, UserMixin
 from flask_cors import CORS
 from requests_oauthlib import OAuth2Session
@@ -44,9 +44,13 @@ def load_user(user_id):
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
     authorization_url, state = discord.authorization_url(authorization_base_url)
-    return redirect(authorization_url)
+    response = make_response("", 302)
+    response.headers['Location'] = authorization_url
+    response.headers['Custom-Header'] = 'CustomHeaderValue'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    # return redirect(authorization_url)
     # response = jsonify({"auth_url": authorization_url})
-    # return response
+    return response
 
 # Define an endpoint for discord login callback
 @app.route('/api/discordLogin/callback', methods=['GET'])
