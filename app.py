@@ -97,8 +97,8 @@ def logout():
     # Revoke the access token
     if 'token' in session:
         discord = OAuth2Session(client_id, token=session['token'])
+        print(session['token']['access_token'])
         discord.post(revoke_url, data={'token': session['token']['access_token'],
-                                        'token_type_hint': 'access_token',
                                         'client_id': client_id,
                                         'client_secret': client_secret})
         session.clear()
