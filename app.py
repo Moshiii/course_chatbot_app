@@ -20,6 +20,7 @@ client_secret = os.environ['CLIENT_SECRET']
 authorization_base_url = 'https://discord.com/api/oauth2/authorize'
 token_url = 'https://discord.com/api/oauth2/token'
 api_base_url = 'https://discord.com/api'
+revoke_url = api_base_url + '/token/revoke'
 scope = 'identify email guilds'
 guild_id = '830604066660286464'
 openai.api_key = os.environ['OPENAI_API_KEY']
@@ -93,7 +94,14 @@ def get_home():
 # Define an endpoint for discord logout
 @app.route('/api/discordLogout')
 def logout():
-    session.clear()
+    # Revoke the access token
+    if 'token' in session:
+        discord = OAuth2Session(client_id, token=session['token'])
+        discord.post(revoke_url, data={'token': session['token']['access_token'],
+                                        'token_type_hint': 'access_token',
+                                        'client_id': client_id,
+                                        'client_secret': client_secret})
+        session.pop('token', None)
     return redirect(front_end_url)
 
 # Define an endpoint for test
