@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, redirect, request, url_for, session, make_response, request
-from flask_login import LoginManager, login_required, login_user, UserMixin
+from functools import wraps
 from flask_cors import CORS
 from requests_oauthlib import OAuth2Session
 from dotenv import load_dotenv
@@ -8,8 +8,7 @@ import os
 import logging
 
 app = Flask(__name__)
-app.secret_key = 'my_secret_key_random_123456789'
-login_manager = LoginManager(app)
+app.secret_key = os.urandom(24)
 CORS(app)
 
 # Load the .env file
@@ -28,28 +27,26 @@ front_end_url = os.environ['FRONT_END_URL']
 #  disable output buffering in Flask
 os.environ['PYTHONUNBUFFERED'] = '1'
 
-class User(UserMixin):
-    def __init__(self, id, email, name):
-        self.id = id
-        self.email = email
-        self.name = name
-
-@login_manager.user_loader
-def load_user(user_id):
-    # Load the user object from the database or other storage
-    return User(user_id, session['user_email'], session['user_name'])
+def discord_token_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        auth_header = request.headers.get('Authorization')
+        if auth_header and auth_header.startswith('Bearer '):
+            bearer_token = auth_header[7:]
+            discord = OAuth2Session(client_id, token={'access_token': bearer_token, 'token_type': 'Bearer'})
+            user_data = discord.get(api_base_url + '/users/@me').json()
+            if not 'id' in user_data:
+                return jsonify({"error": "Invalid or expired token"}), 401
+        else:
+            return jsonify({"error": "Authorization header is missing or invalid"}), 401
+        return f(*args, **kwargs)
+    return wrapper
 
 # Define an endpoint for discord login
 @app.route('/api/discordLogin', methods=['GET'])
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
     authorization_url, state = discord.authorization_url(authorization_base_url)
-    # return redirect(authorization_url)
-    # response = make_response("", 302)
-    # response.headers['Location'] = authorization_url
-    # response.headers['Custom-Header'] = 'CustomHeaderValue'
-    # response.headers['Access-Control-Allow-Origin'] = '*'
-    
     response = jsonify({"auth_url": authorization_url})
     return response
 
@@ -77,21 +74,14 @@ def discord_callback():
     user_name = user_info.get('username')
     print("get user_info:")
     print(user_info)
-    # Load the user object and log the user in
-    user = User(user_id, user_email, user_name)
-    login_user(user)
 
     # Store the user's email and name in the session
     session['user_id'] = user_id
     session['user_email'] = user_email
     session['user_name'] = user_name
 
-    # chat_url = f"{front_end_url}/chat"
-    # print("chat_url:", chat_url)
-    # return redirect(f"{front_end_url}/chat")
     response = redirect(f"{front_end_url}/chat")
     response.set_cookie('access_token', value=token['access_token'])
-    response.set_cookie('cookie_session', value=str(session))
     return response
    
 
@@ -100,31 +90,21 @@ def discord_callback():
 def get_home():
     return "this is home page"
 
-
-# Define an endpoint for error api
-@app.route('/error', methods=['GET'])
-def get_error():
-    return "this is error page"
-
 # Define an endpoint for discord logout
 @app.route('/api/discordLogout')
-@login_required
 def logout():
     session.clear()
     return redirect(front_end_url)
 
 # Define an endpoint for test
 @app.route('/api/test', methods=['GET'])
-@login_required
+@discord_token_required
 def test():
-    # Check if the user's access token is in the session
-    if 'token' not in session:
-        return redirect(url_for('get_error'))
     return jsonify({"TEST": "test"})
 
 # Define an endpoint for openai
 @app.route('/api/openai', methods=['POST'])
-@login_required
+@discord_token_required
 def get_openai():
     prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
     response = openai.Completion.create(
