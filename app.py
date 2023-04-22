@@ -81,10 +81,12 @@ def discord_callback():
     session['user_email'] = user_email
     session['user_name'] = user_name
 
-    chat_url = f"{front_end_url}/chat"
-    print("chat_url:", chat_url)
+    # chat_url = f"{front_end_url}/chat"
+    # print("chat_url:", chat_url)
     # Redirect the user to the chat page
-    return redirect(f"{front_end_url}/chat")
+    # return redirect(f"{front_end_url}/chat")
+    response = jsonify({"session": session})
+    return response
 
 # Define an endpoint for home
 @app.route('/api/home', methods=['GET'])
