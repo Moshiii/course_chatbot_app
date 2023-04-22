@@ -41,4 +41,7 @@ question = "Where was it played?"
 messages.append({"role": "user", "content": question})
 messages = chat_with_context(messages)
 print(messages[-1]["content"])
+print(messages)
+
+
 

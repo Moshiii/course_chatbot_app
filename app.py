@@ -113,7 +113,9 @@ def test():
 # Define an endpoint for openai
 @app.route('/api/openai', methods=['POST'])
 @discord_token_required
-def chat_with_context(messages):
+def chat_with_context():
+    messages = request.json.get('apiRequestBody')
+    print("chat_with_context", messages)
     if messages[-1]["role"]!="user":
         print("last message is not from user")
         return None
