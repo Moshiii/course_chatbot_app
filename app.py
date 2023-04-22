@@ -43,13 +43,6 @@ def discord_token_required(f):
         return f(*args, **kwargs)
     return wrapper
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = front_end_url
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
-    return response
-
 # Define an endpoint for discord login
 @app.route('/api/discordLogin', methods=['GET'])
 def discord_login():
