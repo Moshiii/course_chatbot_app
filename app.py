@@ -101,7 +101,7 @@ def logout():
                                         'token_type_hint': 'access_token',
                                         'client_id': client_id,
                                         'client_secret': client_secret})
-        session.pop('token', None)
+        session.clear()
     return redirect(front_end_url)
 
 # Define an endpoint for test
