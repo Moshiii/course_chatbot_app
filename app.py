@@ -43,6 +43,13 @@ def discord_token_required(f):
         return f(*args, **kwargs)
     return wrapper
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = front_end_url
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+    return response
+
 # Define an endpoint for discord login
 @app.route('/api/discordLogin', methods=['GET'])
 def discord_login():
@@ -103,7 +110,6 @@ def logout():
                                         'client_secret': client_secret})
         session.clear()
     response = redirect(front_end_url)
-    response.headers.add('Access-Control-Allow-Origin', '*')
     # return redirect(front_end_url)
 
 # Define an endpoint for test
@@ -119,7 +125,6 @@ def get_openai():
     prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
     response = openai.Completion.create(
         model="text-curie-001", prompt=prompt, temperature=7)
-    response.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify({"openai": "test", "response": response})
 
 
