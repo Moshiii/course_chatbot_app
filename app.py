@@ -44,13 +44,14 @@ def load_user(user_id):
 def discord_login():
     discord = OAuth2Session(client_id, scope=scope)
     authorization_url, state = discord.authorization_url(authorization_base_url)
-    response = make_response("", 302)
-    response.headers['Location'] = authorization_url
-    response.headers['Custom-Header'] = 'CustomHeaderValue'
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    # return redirect(authorization_url)
+    return redirect(authorization_url)
+    # response = make_response("", 302)
+    # response.headers['Location'] = authorization_url
+    # response.headers['Custom-Header'] = 'CustomHeaderValue'
+    # response.headers['Access-Control-Allow-Origin'] = '*'
+    
     # response = jsonify({"auth_url": authorization_url})
-    return response
+    # return response
 
 # Define an endpoint for discord login callback
 @app.route('/api/discordLogin/callback', methods=['GET'])
@@ -85,10 +86,12 @@ def discord_callback():
     session['user_email'] = user_email
     session['user_name'] = user_name
 
-    chat_url = f"{front_end_url}/chat"
-    print("chat_url:", chat_url)
-    # Redirect the user to the chat page
-    return redirect(f"{front_end_url}/chat")
+    # chat_url = f"{front_end_url}/chat"
+    # print("chat_url:", chat_url)
+    # return redirect(f"{front_end_url}/chat")
+    response = redirect(f"{front_end_url}/chat")
+    response.set_cookie('access_token', value=token['access_token'])
+    return response
    
 
 # Define an endpoint for home
