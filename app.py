@@ -109,7 +109,7 @@ def logout():
                                         'client_id': client_id,
                                         'client_secret': client_secret})
         session.clear()
-    return jsonify({"message": "logout")
+    return jsonify({"message": "logout"})
 
 # Define an endpoint for test
 @app.route('/api/test', methods=['GET'])
