@@ -9,7 +9,6 @@ import logging
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-CORS(app, origins=[front_end_url])
 
 # Load the .env file
 load_dotenv()
@@ -28,6 +27,7 @@ front_end_url = os.environ['FRONT_END_URL']
 #  disable output buffering in Flask
 os.environ['PYTHONUNBUFFERED'] = '1'
 
+CORS(app, origins=[front_end_url])
 def discord_token_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
