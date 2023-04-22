@@ -116,7 +116,7 @@ def test():
 def get_openai():
     prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
     response = openai.Completion.create(
-        model="text-curie-001", prompt=prompt, temperature=7)
+        model="text-curie-001", prompt=prompt, temperature=0.2)
     return jsonify({"openai": "test", "response": response})
 
 
