@@ -113,12 +113,22 @@ def test():
 # Define an endpoint for openai
 @app.route('/api/openai', methods=['POST'])
 @discord_token_required
-def get_openai():
-    prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
-    response = openai.Completion.create(
-        model="text-curie-001", prompt=prompt, temperature=0.2)
-    return jsonify({"openai": "test", "response": response})
-
+def chat_with_context(messages):
+    if messages[-1]["role"]!="user":
+        print("last message is not from user")
+        return None
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+    )
+    answer = response["choices"][0]["message"]["content"]
+    messages.append({"role": "assistant", "content": answer})
+    return jsonify(messages)
+# def get_openai():
+#     prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
+#     response = openai.Completion.create(
+#         model="text-curie-001", prompt=prompt, temperature=0.2)
+#     return jsonify({"openai": "test", "response": response})
 
 if __name__ == '__main__':
     context = ('cert.pem', 'key.pem')
