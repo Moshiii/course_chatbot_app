@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import openai
 import os
 import logging
-from openai_offline_script import openai_api_test_query
+# from openai_offline_script import openai_api_test_query
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 CORS(app)
@@ -120,13 +120,13 @@ def chat_with_context():
         print("last message is not from user")
         return None
 
-    # response = openai.ChatCompletion.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=messages,
-    # )
-    # answer = response["choices"][0]["message"]["content"]
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+    )
+    answer = response["choices"][0]["message"]["content"]
 
-    answer = openai_api_test_query.ask_question(messages[-1]["content"])
+    # answer = openai_api_test_query.ask_question(messages[-1]["content"])
 
     messages.append({"role": "assistant", "content": answer})
     return jsonify(messages)
