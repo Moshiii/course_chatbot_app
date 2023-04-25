@@ -34,7 +34,7 @@ def ask(question: str, embeddings, sources):
         question, embeddings)
     ctx = ""
     for candi in ordered_candidates:
-        next = ctx + " " + sources[candi[1]]
+        next = ctx + " " +"file name: "+filenames[candi[1]]+" page index: "+str(pageindex[candi[1]])+" "+ sources[candi[1]]
         if len(next) > CONTEXT_TOKEN_LIMIT:
             break
         ctx = next
@@ -49,11 +49,14 @@ def ask(question: str, embeddings, sources):
 
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
-    return [prompt, completion.choices[0].message.content]
+    # return [prompt, completion.choices[0].message.content]
+    return completion.choices[0].message.content
 
 
 embeddings = []
 sources = []
+filenames = []
+pageindex = []
 with open('content_update.json', 'r') as f:
     content = json.load(f)
 
@@ -62,6 +65,8 @@ for source in content.keys():
         print(x.keys())
         embeddings.append(x['embedding'])
         sources.append(x['text'])
+        filenames.append(source)
+        pageindex.append(idx)
 
 result = ask("What is cost function? can you give me an example", embeddings, sources)
 print(result)

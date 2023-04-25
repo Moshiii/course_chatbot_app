@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import openai
 import os
 import logging
-
+from openai_offline_script import openai_api_test_query
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 CORS(app)
@@ -119,18 +119,31 @@ def chat_with_context():
     if messages[-1]["role"]!="user":
         print("last message is not from user")
         return None
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages,
-    )
-    answer = response["choices"][0]["message"]["content"]
+
+    # response = openai.ChatCompletion.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=messages,
+    # )
+    # answer = response["choices"][0]["message"]["content"]
+
+    answer = openai_api_test_query.ask_question(messages[-1]["content"])
+
     messages.append({"role": "assistant", "content": answer})
     return jsonify(messages)
-# def get_openai():
-#     prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
-#     response = openai.Completion.create(
-#         model="text-curie-001", prompt=prompt, temperature=0.2)
-#     return jsonify({"openai": "test", "response": response})
+
+# def chat_with_context():
+#     messages = request.get_json(force=True)
+#     print("chat_with_context", messages)
+#     if messages[-1]["role"]!="user":
+#         print("last message is not from user")
+#         return None
+#     response = openai.ChatCompletion.create(
+#         model="gpt-3.5-turbo",
+#         messages=messages,
+#     )
+#     answer = response["choices"][0]["message"]["content"]
+#     messages.append({"role": "assistant", "content": answer})
+#     return jsonify(messages)
 
 if __name__ == '__main__':
     context = ('cert.pem', 'key.pem')

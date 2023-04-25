@@ -51,18 +51,21 @@ def ask(question: str, embeddings, sources):
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
     return [prompt, completion.choices[0].message.content]
 
-
+#===================================================================================================
+# main
+#===================================================================================================
 embeddings = []
 sources = []
 with open('content.json', 'r') as f:
     content = json.load(f)
 
+# with open('content_update.json', 'r') as f:
+#     content = json.load(f)
+
 for source in content.keys():
-    content[source] = content[source][9:12]
+    if source=="main_notes.pdf":
+        content[source] = content[source][9:12]
     for idx, x in enumerate(content[source]):
-        print(x["text"])
-        if source.strip() == '':
-            continue
         content[source][idx]["embedding"] = get_embedding(source)
 
 # save json file
