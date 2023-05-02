@@ -6,7 +6,10 @@ from dotenv import load_dotenv
 import openai
 import os
 import logging
-# from openai_offline_script import openai_api_test_query
+from openai_offline_script import openai_api_test_query
+from openai_offline_script import openai_api_test_chat
+from openai_offline_script import openai_api_test_query_wiki_context
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 CORS(app)
@@ -113,37 +116,14 @@ def test():
 # Define an endpoint for openai
 @app.route('/api/openai', methods=['POST'])
 @discord_token_required
-def chat_with_context():
+def chat():
     messages = request.get_json(force=True)
-    print("chat_with_context", messages)
-    if messages[-1]["role"]!="user":
-        print("last message is not from user")
-        return None
-
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages,
-    )
-    answer = response["choices"][0]["message"]["content"]
-
-    # answer = openai_api_test_query.ask_question(messages[-1]["content"])
-
-    messages.append({"role": "assistant", "content": answer})
+    # messages = openai_api_test_chat.chat_with_context(messages)
+    # messages = openai_api_test_query.ask_with_context(messages)
+    messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_answer_with_context(messages)
+    # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_question_with_context(messages)
     return jsonify(messages)
 
-# def chat_with_context():
-#     messages = request.get_json(force=True)
-#     print("chat_with_context", messages)
-#     if messages[-1]["role"]!="user":
-#         print("last message is not from user")
-#         return None
-#     response = openai.ChatCompletion.create(
-#         model="gpt-3.5-turbo",
-#         messages=messages,
-#     )
-#     answer = response["choices"][0]["message"]["content"]
-#     messages.append({"role": "assistant", "content": answer})
-#     return jsonify(messages)
 
 if __name__ == '__main__':
     context = ('cert.pem', 'key.pem')

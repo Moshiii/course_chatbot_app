@@ -30,7 +30,7 @@ home: https://localhost:5000/
 ## query dynamics:
 
 
-attatch some links from wiki after the answer
+attatch some links from wiki after the answer.
 
 focus:
 based on a user input, 

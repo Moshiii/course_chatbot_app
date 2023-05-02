@@ -29,27 +29,6 @@ def order_document_sections_by_query_similarity(query: str, embeddings) -> list[
     return document_similarities
 
 
-def ask(question: str, embeddings, sources):
-    ordered_candidates = order_document_sections_by_query_similarity(
-        question, embeddings)
-    ctx = ""
-    for candi in ordered_candidates:
-        next = ctx + " " + sources[candi[1]]
-        if len(next) > CONTEXT_TOKEN_LIMIT:
-            break
-        ctx = next
-    if len(ctx) == 0:
-        return ""
-
-    prompt = "".join([
-        u"Answer the question based on the following context:\n\n"
-        u"context:" + ctx + u"\n\n"
-        u"Q:"+question+u"\n\n"
-        u"A:"])
-
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
-    return [prompt, completion.choices[0].message.content]
 
 #===================================================================================================
 # main
