@@ -4,6 +4,9 @@ import openai
 import json
 from openai_offline_script import openai_api_test_key_word_extraction
 from openai_offline_script import wikipedia_api_test
+from dotenv import load_dotenv
+# Load the .env file
+load_dotenv()
 
 openai.api_key = os.environ['OPENAI_API_KEY']
 EMBEDDING_MODEL = "text-embedding-ada-002"
