@@ -1,8 +1,9 @@
 import os
 import openai
-
+from dotenv import load_dotenv
 openai.api_key = os.environ['OPENAI_API_KEY']
-
+# Load the .env file
+load_dotenv()
 def chat_with_context(messages):
     #if last messgae is not from user, return None
     if messages[-1]["role"]!="user":

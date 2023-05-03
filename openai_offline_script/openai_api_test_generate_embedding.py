@@ -2,7 +2,9 @@ import os
 import numpy as np
 import openai
 import json
-
+from dotenv import load_dotenv
+# Load the .env file
+load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 EMBEDDING_MODEL = "text-embedding-ada-002"
 CONTEXT_TOKEN_LIMIT = 1024

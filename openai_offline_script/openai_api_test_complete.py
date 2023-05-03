@@ -1,7 +1,9 @@
 import os
 
 import openai
-
+from dotenv import load_dotenv
+# Load the .env file
+load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 # prompt = "Hello, this is a test, if you can receive this message, just reply: ChatGPT system online."
 
