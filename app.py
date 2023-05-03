@@ -119,8 +119,8 @@ def test():
 def chat():
     messages = request.get_json(force=True)
     # messages = openai_api_test_chat.chat_with_context(messages)
-    # messages = openai_api_test_query.ask_with_context(messages)
-    messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_answer_with_context(messages)
+    messages = openai_api_test_query.ask_with_context(messages)
+    # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_answer_with_context(messages) # tested working but slow
     # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_question_with_context(messages)
     return jsonify(messages)
 
