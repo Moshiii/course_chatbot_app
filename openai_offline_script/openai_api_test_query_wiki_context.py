@@ -2,10 +2,9 @@ import os
 import numpy as np
 import openai
 import json
-# from openai_offline_script import openai_api_test_key_word_extraction
-# from openai_offline_script import wikipedia_api_test
-import wikipedia_api_test
-import openai_api_test_key_word_extraction
+from openai_offline_script import openai_api_test_key_word_extraction
+from openai_offline_script import wikipedia_api_test
+
 
 from dotenv import load_dotenv
 # Load the .env file
