@@ -49,7 +49,6 @@ def ask_with_wiki_search_on_question(query: str):
 
 def ask_with_wiki_search_on_answer(query: str):
 
-
     prompt = query
 
     completion = openai.ChatCompletion.create(
@@ -62,14 +61,11 @@ def ask_with_wiki_search_on_answer(query: str):
     print(result_list)
     context = {}
     links = {}
-    for x in result_list:
-        title, url, summary, references = wikipedia_api_test.search_wiki(x)
+    for x in result_list[:3]:
+        title, url, summary, references = wikipedia_api_test.search_wiki_first_only(x)
         print("link: ", url)
-        # print(title)
-        # print(summary)
         context[title] = url
         links[title] = url
-    # append list of links after the anwser
     answer+="\n\n"
     for key in links.keys():
         answer+="\n"+key+": "+links[key]
