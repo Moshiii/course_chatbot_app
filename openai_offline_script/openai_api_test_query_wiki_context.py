@@ -77,6 +77,7 @@ def ask_with_wiki_search_on_question_with_context(messages: str) -> str:
     user_query  = messages[-1]["content"]
     answer = ask_with_wiki_search_on_question(user_query)
     messages.append({"role": "assistant", "content": answer})
+    return messages
 
     
 def ask_with_wiki_search_on_answer_with_context(messages: str) -> str:
@@ -84,6 +85,8 @@ def ask_with_wiki_search_on_answer_with_context(messages: str) -> str:
     user_query  = messages[-1]["content"]
     answer = ask_with_wiki_search_on_answer(user_query)
     messages.append({"role": "assistant", "content": answer})
+    return messages
+
 
 if __name__ == "__main__":
     query = "what is the loss function of a recurrent neural network?"
