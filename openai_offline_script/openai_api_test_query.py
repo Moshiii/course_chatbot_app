@@ -50,6 +50,7 @@ def ask_with_context(messages: str) -> str:
     user_query  = messages[-1]["content"]
     answer = ask(user_query,embeddings, sources, filenames, pageindex)
     messages.append({"role": "assistant", "content": answer})
+    return messages
 
 def ask(question: str, embeddings, sources, filenames, pageindex):
     ordered_candidates = order_document_sections_by_query_similarity(
