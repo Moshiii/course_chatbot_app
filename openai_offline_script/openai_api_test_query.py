@@ -3,6 +3,8 @@ import numpy as np
 import openai
 import json
 from dotenv import load_dotenv
+from openai_offline_script import openai_api_test_key_word_extraction
+from openai_offline_script import wikipedia_api_test
 # Load the .env file
 load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
@@ -30,8 +32,9 @@ def order_document_sections_by_query_similarity(query: str, embeddings) -> list[
     # print("document_similarities",document_similarities)
     return document_similarities
 
+
 def ask_with_context(messages: str) -> str:
-    
+
     embeddings = []
     sources = []
     filenames = []
@@ -46,21 +49,22 @@ def ask_with_context(messages: str) -> str:
             filenames.append(source)
             pageindex.append(idx)
 
-
-    user_query  = messages[-1]["content"]
-    answer = ask(user_query,embeddings, sources, filenames, pageindex)
+    user_query = messages[-1]["content"]
+    answer = ask(user_query, embeddings, sources, filenames, pageindex)
     messages.append({"role": "assistant", "content": answer})
     return messages
+
 
 def ask(question: str, embeddings, sources, filenames, pageindex):
     ordered_candidates = order_document_sections_by_query_similarity(
         question, embeddings)
     ctx = ""
     for candi in ordered_candidates:
-        next = ctx + " " +"file name: "+filenames[candi[1]]+" page index: "+str(pageindex[candi[1]])+" file content:"+ sources[candi[1]]
+        next = ctx + " " + "file name: "+filenames[candi[1]]+" page index: "+str(
+            pageindex[candi[1]])+" file content:" + sources[candi[1]]
         if len(next) > CONTEXT_TOKEN_LIMIT:
             break
-        print("next",next)
+        print("next", next)
         ctx = next
     if len(ctx) == 0:
         return ""
@@ -73,6 +77,77 @@ def ask(question: str, embeddings, sources, filenames, pageindex):
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
     return completion.choices[0].message.content
+
+
+def ask_with_wiki_search_on_answer_with_context(messages):
+
+    embeddings = []
+    sources = []
+    filenames = []
+    pageindex = []
+    with open('content_update.json', 'r') as f:
+        content = json.load(f)
+
+    for source in content.keys():
+        for idx, x in enumerate(content[source]):
+            embeddings.append(x['embedding'])
+            sources.append(x['text'])
+            filenames.append(source)
+            pageindex.append(idx)
+
+    user_query = messages[-1]["content"]
+    answer = ask(user_query, embeddings, sources, filenames, pageindex)
+
+    result_list = openai_api_test_key_word_extraction.extract_key_word_list(
+        answer)
+    print(result_list)
+    context = {}
+    links = {}
+    for x in result_list[:3]:
+        title, url, summary, references = wikipedia_api_test.search_wiki_first_only(
+            x)
+        print("link: ", url)
+        context[title] = url
+        links[title] = url
+    answer += "\n\n"
+    for key in links.keys():
+        answer += "\n"+key+": "+links[key]
+
+    messages.append({"role": "assistant", "content": answer})
+    return messages
+
+
+def ask_with_wiki_search_on_question_with_context(messages):
+
+    embeddings = []
+    sources = []
+    filenames = []
+    pageindex = []
+    with open('content_update.json', 'r') as f:
+        content = json.load(f)
+
+    for source in content.keys():
+        for idx, x in enumerate(content[source]):
+            embeddings.append(x['embedding'])
+            sources.append(x['text'])
+            filenames.append(source)
+            pageindex.append(idx)
+
+    user_query = messages[-1]["content"]
+    answer = ask(user_query, embeddings, sources, filenames, pageindex)
+
+    result_list = openai_api_test_key_word_extraction.extract_key_word_list(
+        user_query)
+    context = {}
+    links = {}
+    for x in result_list:
+        title, url, summary, references = wikipedia_api_test.search_wiki(x)
+        print("link: ", url)
+        context[title] = summary
+        links[title] = url
+
+    messages.append({"role": "assistant", "content": answer})
+    return messages
 
 
 if __name__ == "__main__":
@@ -91,5 +166,6 @@ if __name__ == "__main__":
             filenames.append(source)
             pageindex.append(idx)
 
-    result = ask("What is cost function? can you give me an example", embeddings, sources, filenames, pageindex)
+    result = ask("What is cost function? can you give me an example",
+                 embeddings, sources, filenames, pageindex)
     print(result)

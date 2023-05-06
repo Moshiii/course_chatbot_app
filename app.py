@@ -118,10 +118,22 @@ def test():
 @discord_token_required
 def chat():
     messages = request.get_json(force=True)
+    option = messages[-1]["option"]
+    if option == "Focus":
+        messages = openai_api_test_query.ask_with_wiki_search_on_question_with_context(messages)
+    if option == "Explore":
+        messages = openai_api_test_query.ask_with_wiki_search_on_answer_with_context(messages)
+
     # messages = openai_api_test_chat.chat_with_context(messages)
-    messages = openai_api_test_query.ask_with_context(messages)
-    # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_answer_with_context(messages) # tested working but slow
-    # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_question_with_context(messages)
+    # messages = openai_api_test_query.ask_with_context(messages)
+    # messages = openai_api_test_query.ask_with_wiki_search_on_answer_with_context(messages)
+    # messages = openai_api_test_query.ask_with_wiki_search_on_question_with_context(messages)
+    # =======================
+    # archive
+    # =======================
+    # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_answer_with_context(messages) # problem: tested working but slow
+    # messages = openai_api_test_query_wiki_context.ask_with_wiki_search_on_question_with_context(messages) # problem: very general context does not provide good answer
+    
     return jsonify(messages)
 
 
