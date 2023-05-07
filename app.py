@@ -124,7 +124,7 @@ def chat():
     elif option == "Explore":
         messages = openai_api_test_query.ask_with_wiki_search_on_answer_with_context(messages)
     else:
-        messages = openai_api_test_chat.chat_with_context(messages)
+        messages = openai_api_test_chat.ask_with_context(messages)
     # messages = openai_api_test_chat.chat_with_context(messages)
     # messages = openai_api_test_query.ask_with_context(messages)
     # messages = openai_api_test_query.ask_with_wiki_search_on_answer_with_context(messages)
