@@ -77,7 +77,7 @@ a picture of prof and welome message in the landing page saying well come to my 
 at the landing page, befor direct to the authepage. 
 a popup says: in using the system,the student code of conduct apply, please do not abuse the system.
 
-a popup says:please always refer to you study material and textbook for answer and verification of the correctness of the answer the system provides. 
+a popup says: please always refer to you study material and textbook for answer and verification of the correctness of the answer the system provides. 
 
 
 
