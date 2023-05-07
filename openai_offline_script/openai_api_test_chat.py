@@ -9,9 +9,15 @@ def chat_with_context(messages):
     if messages[-1]["role"]!="user":
         print("last message is not from user")
         return None
+    #remove option attribute from dict
+    for message in messages:
+        message.pop("option", None)
+        
+    
     #====================================
     # openai API call
     #====================================
+    
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
