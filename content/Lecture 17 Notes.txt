@@ -1,0 +1,128 @@
+Lecture 17: Drag notes:
+Evaluate the range of boundary-layer thickness between laminar and turbulent
+ Blasius(1908)
+Laminar: or in
+
+Turbulent:  or  Ans.(a)
+
+(b, c) Evaluate the range of boundary-layer drag for both laminar and turbulent flow
+Note that, for flow over both sides, the appropriate arca A=2bL:
+
+ Ans.(b)
+
+ Ans.(c)
+Turbulent drag is about 4 times larger than laminar drag
+To find a more accurate measure of drag, one needs to break the plate into two parts: 
+Area 1 where drag force is calculated using laminar formula and the corresponding area 
+Area 2: where drag force is calculated using turbulent formula and the corresponding area 
+Adding the drag force from areas 1 and 2 
+
+To find the area 1, one needs to use the 103 for Re and solve for L (the length Where transition from lam. To Turb. Will take place 
+
+ 
+Goals for Lect. 17 
+1. External flow: Drag force 
+a. Types of drag force (skin & pressure) 
+b. How to calculate drag force 
+c. What factors affect drag force
+
+
+Experimental External Flows:
+The B.L. Theory is only useful for flat plate to determine the separation, but for all other shapes, CFD, or likely Exp. Are used.
+One is always concerned with forces on a body (e.g. airfoil, ship, building) over which an external flow exist.  
+Drag acts along the axis parallel to the free strem
+
+Rolling moment moment around the free stream axis
+
+Drag Force Depends on:
+Flow conditions, turbulent or laminar
+Geometry of the object, e.g. airfoil, or cyl. Or cube
+Orientation of flow w.r.t. to the body
+
+Drag Force and angle of Attack:
+The angle between the chord and direction of free stream flow is called “angle of attack”(: usually for airplanes (or wind turbines) this is max 10 drag. The higher the  the higher the possibility of separation high drag!
+
+Components of Drag Force:
+Drag force has two components usually:
+Friction Drag:  This is the summation wall stresses or the “skin” of the body. Obviously friction or skin drag is the result of B/L
+
+Pressure Drag: If flow separates, a low press. Region will be seen in the rear of an object; as such a “drag force” will be seen due to pressure differential in the front of the object (stagnation point region) and the rear of the object(separation region)
+
+ coefficient of drag due to pressure; 
+ oonly cyl.
+
+
+
+Outer stream grossly perturbed by broad flow separation and wake
+
+
+Pressure drag not total drag, stream function calculation from chapter 5 N/10 for switch one of Cp between lam and Tub. Flow
+
+Notes on Components of Drag Flow:
+Note 1: Friction (skin) drag is always present (since B.L. is always present), BUT pressure drag is noticeable when separation occurs!
+Note 2: separation is seen
+Higher Re or vel.
+Mis-orientation of free stream and object’s geometry, e.g. high  values
+Thickness of object/bluntness of corners etc.
+
+Note 3: The contribution of press. And fiction drag to total drag varies, e.g. a flat plate will have 100% friction drag as a percentage of total drag; where as a friction and pressure drag are each 50% for an object of dimension shown below
+
+
+
+
+
+
+How to Calculate the Drag Force:
+To evaluate drag force, usually drag coefficient (CD) Is used. CD is found mostly experimentally or by CFD.
+
+ motion of kinetic energy/pressure
+ characteristic area
+
+Accounts for both friction and press. Drag,
+
+ pressure
+ friction
+
+Characteristic Area in Drag Force 
+The area A is usually one of three types: 
+Frontal area, the body as seen from the stream; suitable for thick, stubby bodies,  such as spheres, cylinders, cars, trucks, missiles, projectiles, and torpedoes. 
+Planform area, the body area as seen from above; suitable for wide, flat bodies such as wings and hydrofoils. 
+Wetted area, customary for surface ships and barges.
+
+
+
+Frontal Area in Drag Force
+
+
+Note:
+The frontal area should be calculated w.r.t. The normal to the direction of free flow stream (i.e. the projected one of the object on the plane normal to the free stream flow axis)
+
+e.g. if the flow is frontal of the above airfoil, the A=S x C (Planform Area or if  then 
+
+
+What Affects Drag Force?
+Flow conditions
+Separation point on a cylinder differs from laminar vs. turbulent flow
+Think of dimples on golf ball to force(trip) flow from lam. To tub. To reduce Cp to have the ball travel further due to less drag.
+
+Geometry of the object: stream lining
+
+
+
+
+
+See Example 7.6
+Drag Force in Creeping (Stokes’) Flow (Re<<1)
+When Re<<1 
+Acceleration terms in N.S. eqs. Are negligible.
+Viscous stream is dominant    since high 
+
+Momentum eq. simplifies due to 1) as: ,  continuity incomp. Fluid
+For simple shapes above eqs. Can be solved as they are linear O.D.E’s
+
+Stokes solves them for a sphere and found CD theoretically as:
+,  dia. Of sphere,  sphere in creeping flow
+Accounts up to 
+      dia. Of sphere
+See problem 7.725
+ 

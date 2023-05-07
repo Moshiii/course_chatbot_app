@@ -1,0 +1,310 @@
+Lecture 13 Notes:
+
+Goals for today- Lecture 13
+Cavitation in pumps 
+Pumps and their characteristics Net Positive Suction head 
+Pump Non-dimensional parameters, i.e. coefficients of capacity, head, and power 
+Series and parallel pumps 
+
+Net Positive Suction Head (NPSH):
+In a pump curve, NPSH defines under what condition, the pump will cavitate i.e.  where  saturated pressure for liquid at given temp.
+
+Cavitation Video:
+Cavitation ‐Easily explained! 
+
+If fluid will boil flow will become bubbly
+(cavitation) pump vibration, extra noise, pitting of vane/blades since bubble will burst on the travel to the high press. Side (i.e. exit of pump)
+
+*cavitation must be prevented always
+
+Condirion to avoid cavitation (1)
+
+NPSH-> read from pump performance curves
+  total flow head
+ available NPSH
+
+Using Bernoulli for a pump intake place above a reservoir
+ (2)
+ both minor and major losses
+
+Always design for hot condition!!
+
+Sec 11.2: Basis Pump Formulas:
+
+Power delivered to the fluid 
+Power delivered to the pump (BHP) 
+Pump designer wants to maximize this 
+(3)  
+ volumetric, Q that is last due to clearance between casing and vane/impeller/blades
+ hydraulic, frictional loss over blades/vanes, outlet …
+ mechanical efficiency (bearing, etc.)
+
+
+ flow rate at outlet
+ recirculated flow in the pump due to clearances
+
+
+ frictional losses inside the pump
+ total static head of the pump
+
+
+
+ frictional losses of power due to mechanical components
+ 
+
+Dimensional Pump Parameters:
+
+ RPM,   roughness
+
+
+Eliminate the dimensions
+ (4)
+ CH Coefficient of head
+
+ (5)
+
+ Cp coefficient of power
+ CQ coefficient of capacity
+
+
+In practice, due to high turbulence, is show to have little effect, and experiment show that for many pumps, viscosity (for a given fluid) has the same percentage effect, i.e.  term can be discounted for similarity analysis see fig.11.8
+ (6)
+[For geometrically similar pumps using the same liquid]
+
+Also,  so ,  is a finction of  as well
+Suctioned 
+
+Considering above similarity rules( ) for pump will be: (7)
+
+
+
+
+Eq(7) can be used to estimate the effect of changing parameters such as  etc. on Q, P & H
+
+Note: Although due to similarity principals, one expects , but in practice (effect of  on has (8):
+
+
+Larger purmps or higher Re (Q) will improve slightly the 
+
+Note: Viscosity changes the pump p[performance drastically (see fig.11.10); There is no general eq. for, but needs testing.
+
+Parallel & Series Pumps:
+
+Parallel:
+
+
+Each pump in a parallel arrangement should meet the required head individually
+Little limitation on number of pumps to be in parallel
+Series:
+Parallel:
+
+
+
+Cannot have too many pumps in series due to pressure limitation for pump casing
+
+See Figs, 11.9
+
+Fig. Chap 11
+Basic principles and history of industrial pumps
+
+
+Breast Pump 
+
+
+
+
+  
+Piping system characteristic curve to intersect pump char. curve at or near BEP to have an efficient pumping system
+
+Fig 11.10
+
+Given curve by CQ
+Fig 11.8
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+Introduction to Computational Fluid Dynamics (CFD Analysis):
+
+Airfoil:
+Airfoils are used various for various applications, from turbines blades to airplane wings
+
+Example- simplified airfoil cross section
+For example, this section of a wing can be simplified into a 2 dimensional airfoil for easier analysis.
+
+For this example we will use the following values & assumptions: 
+Fluid is air 
+Velocity at inlet is 100 m/s 
+No slip condition on airfoil surface Assumptions: 
+2-dimensional 
+Steady State 
+Incompressible 
+Atmospheric pressure at end of controlled volume
+
+Physical vs. CFD:
+Notice in CFD we analyze the surrounding volume of fluid, not the solid the airfoil 
+This is a controlled volume analysis, 
+Walls of the CV needs to be defined (yellow lines/curves) 
+the walls must be at a reasonable distance from the airfoil to avoid the flow to be altered by the walls.
+
+
+CFD Analysis:
+There are many commercial and open source CFD codes 
+Fluent (by ANSYS) 
+Open Foam 
+Star‐CCM+ 
+Some are specialized (FINE/Marine), some are more general (Fluent)
+ Percentage of Respondent 2016
+
+
+Overall structure of CFD analysis
+The general process for performing a CFD analysis according to NASA: 
+Formulate the Flow Problem 
+Model the Geometry and Flow Domain 
+Establish the Boundary and Initial Conditions 
+Generate the Grid 
+Establish the Simulation Strategy 
+Establish the Input Parameters and Files 
+Perform the Simulation
+Monitor the Simulation for Completion 
+Post‐process the Simulation to get the Results 
+Make Comparisons of the Results 
+Repeat the Process to Examine Sensitivities 
+Document
+
+
+  L. Jawad Aziz, M. T. Nasret, Int. J. Sci& EnggRes, 5, 143, 2014
+
+We will use Fluent in this course
+To make the geometry you can use Solidworksand then import to Fluent
+It is available in the counsels under ANSYS software package in Petire Building room 020 (the computer labs)
+
+Creating the geometry for analysis The geometry can be created in SolidWorks, but then has to be imported in ANYSYS   After importing, click “Generate” for the object to appear and finish the importing process 
+
+
+Mesh 
+Now that there is a geometry, we can divide it into elements.
+ 
+Mesh shape 
+The mesh was generated using an automatic method, which resulted in 234 elements. 
+Note that the elements are smaller in the highlighted section, this is because the program predicts greater velocity and pressure gradients in front of the airfoil.
+
+
+
+Fluent 
+Now that we have defined the geometry and the mesh size, we can continue to edit our case in “Fluent”, where we’ll set all the parameters to solve.
+
+
+Two Dimensional Flow:
+Continuity  
+Navier-Stokes
+
+
+
+
+
+  0
+ 0
+ 0
+ 0
+
+
+
+
+
+
+
+
+Define Steady State
+ Continuity(steady flow)
+ 0
+Navier-Stokes (steady flow):
+
+ 
+
+
+Define Incompressible Flow:
+ Continuity (Incompressible Flow)
+Navier-Stokes(Incompressible Flow)
+
+ 
+
+Define material
+A material can be selected (in this case air), or any other material with user defined properties (UDF), this allows the user to later apply the material for the system
+
+This option assigns the material to the system, in the fluid region
+
+Define material Density (ρ) and viscosity (μ) are known:
+
+ 
+
+Boundary Conditions:
+Now that the material is known and the equations to be used are simplified, we can specify the boundary conditions:
+Continuity(Steady and Incompressible Gas)  
+Navier-Stokes equations (constant density and viscosity)
+
+ 
+
+
+
+Boundary conditions cont’d:
+Inlet velocity: 
+u and v are known, u = 100, v = 0, at the inlet
+ 
+ Outlet pressure 
+Pressure is know
+
+
+
+No slip condition on walls: 
+Zero velocity on first fluid layer
+ 
+Finite Volume Technique (Fluent)
+Divide the domain into control volumes (elements)
+This is the mesh we created 
+Integrate the differential equation over each control volume and apply the divergence theorem
+To evaluate derivative terms, values at the control volume faces are needed:
+have to make an assumption about how the value varies (this is called initialization) –different from Boundary Conditions.
+All above results in:  a set of linear algebraic equations 
+Note each element is providing 3 PDE in our example, we have 100s of elements (see the mesh), so the matrix will be a large one to solve 
+Solve iteratively or simultaneously. 
+ 
+ 
+
+The problem is now all setup:
+
+Residuals 
+The residuals are errors due to discretization of a continuous domain into mesh and solving over each element 
+Usually an acceptable tolerance for this errors should be set  --this called sometimes convergence criterion 
+The equations were allowed to have an error of 110 
+To start,  It is a good idea to start with the default values in the software for the convergence criterion.  
+In the FLUENT residuals are reported for each conservation equation.
+ 
+
+The problem is now solved 
+
+Results – Pressure contours;
+
+
+ Results –Velocity Vector Field 
+ 
+Results –Pathlines by Velocity Magnitude
+
+
+How would the results change if the vane was lifted by 30˚ ?
+
+Velocity field   -sensitivity/design analysis
+
+Streamlines
+ The end!

@@ -1,0 +1,116 @@
+Lecture 9 – Potential Flows
+
+When flow is both frictionless and irrotational  momentum eq, I.e. eq 11 reduces to Euler’s eq.
+
+Euler’s equation is much simpler to solve and it can be very useful for low aerodynamic (as least on a 1st estimate), low vel gas flow, or low vel and low vel gradient conditions for liquid flow, eg. Flow in domestic drainage lines
+If flow is irrational, a scaler function, , can be defined as:
+Which is called vel potential
+From a vector analysis theorem: 
+
+What is good for?
+It reduces the prob of solving for 3 variables, u, v, w, into a dingle variable, , in the x, y, z domain
+
+Lines of constant are called “potential lines of flow” and they are normal to streamlines 
+	and 	
+Unlike , can be used in 3D as well
+
+Question: How to find the flow pattern around the tornado?
+Answer: Use of elemental flows, such as: uniform flow, sink/source or pure vortex, etc.
+Uniform Flow
+A uniform flow in only x-direction (I.e. 1D)
+
+	(Did not write the const of integration as recall is a const)
+At const, x, line const lines
+
+
+ 	(const y gives lines)
+
+
+
+
+Sink/Source Flow
+Suppose z-axis was a thin pipe issuing/sucking flow along its length, them from x-y plane, we have:
+
+Using pilar coordinates
+	(“m” is strength)	
+(“b” is the virtual thicken in z-dir)
+
+
+After integration and 
+Const are radical lines
+If --> source
+If --> sink
+
+Line Irrotational Vortex
+A pure 2D line vortex is a circulating steady motion
+ 	only and 	
+If flow is irrotational 	(“k” is a const)
+
+Integrate: 	and 	
+“r”: Const r lines and stream lines
+““: const lines, I.e. potential lines
+
+
+
+Note:
+The above equations for and are all from linear PDEs
+Then the sum of their solution is “a solution” as well concept for super position!
+
+How to make a sink tornado as shown? 						
+Think of rotation of flow --> vortex
+Think of drainage of flow --> sink
+
+           see figure:
+
+When 
+But in reality, there is a viscosity (however small) and near center the vel gradient is extremely large, so this combination means that the assumption of frictionless flow will breakdown and solution is NOT valid near the center and at the center 
+
+Example:
+
+If we consider a source at x=0 and a uniform flow:
+Aside: How to “shape”
+
+
+Infact combination of a source at x=0 and a uniform flow will provide he Rankine body as follows:
+
+
+	(I)
+““ --> polar coordinate
+--> uniform flow
+--> source
+Note:
+The steam line crosses (a no no for streamlines!!)
+But now it is allowed since they cross at stagnation point when vel is zero
+
+Combining eg (I) and (ii), and considering the Figure above (the top part of it, to represent the bump for our problem):
+
+
+To find cartesian vel components
+	(iii) --> both of these equations
+
+
+At stagnation point  from eq (iii), one finds  or 180º and  or  from above figure
+Vel everywhere can be founds as: --> magnitude of velocity
+	(iv)
+m/s
+Note:
+
+
+ --> area for unit length out of page
+
+Bernoulli equation along the streamline  can be applied:
+
+
+We assume Vb = 2.5, as it is down in horizontal section of flow similar to the uniform flow (slip condition holds as flow is considered frictionless)
+
+
+
+Observation:
+Since we used different approach, we can able other questions such as where is max vel on the bump, since we have access to details of flow field in the different approach
+
+Max vel point on the body , after differentiation can be found that is on this point is the min pren. point 
+The min pren point lecoation is the most important as flow reversed downstream of the location many happen that can give rise to formation of flow separation and appearance of eddies (see chap 7 later)
+
+NOTE: Stream function and vel potential function method of analyzing fluid flow through combination of elemental flows is like rapid prototyping seen in manufacturing. One gets a quick but approximate feel/knowledge for flow field to make descriptions
+
+

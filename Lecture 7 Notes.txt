@@ -1,0 +1,207 @@
+Lecture 7 Notes:
+etc. etc.
+Substituting above relationships for  into Eqs. 7-9, one has:
+- 
+
+
+Underlined In Blue: Convectine term & it is non-linear diff. Eq.
+Underlined In Red:inertial terms
+Eq(11) is called Navier-Stokes Eq for incompressible fluids
+Eq(11) is usually solved by CFD Techniques (Computational Fluid Dynamics) due to non-linearity – only a few analytical solutions exists
+Our Goals for Today (lect. 7) 
+Cont'd Chapter 4 and introducing differential form of conservation of Angular momentum & energy
+Solving sample problems using differential forms of conservation equations
+Intro. to irrotational flow & vorticity (time permitting)
+Sec. 4.4 – Diff. Eq.s of Angular Momentum (3rd law)
+Lets consider the notation around centroid of an element (0, i.e. where Z axis crosses the x-y plane
+If I write the quation for moment cqlculation I find that
+
+For notation around y or x axes, one finds:
+
+The above means that there is no diff. Req. Form for conservativation of angular momentum  one should use the integral form given in chapter 3
+Note 1: all pan through the centroid of the element(0) so they have no moment around 0.
+Note 2: Fluid similar to solids experfiences symmetric shear stressors.
+
+
+
+Sec 4.4. Diff. Eq. For Conservation of Energy (4th law)
+It can be shown that the conservation of energy eq. For an element will be eq.(12):
+
+Note: There is no infinitesimal shaft wor (a mechanical shaft cannot be the size of an element)
+ Need to find differential forms of   &  
+Heat transfer to the element to deal with   , we only consider conduction (vast application only have conduction)
+Fourier’s Law for Conduction
+ or in general (3D)
+ coefficient of thermal conductivity 
+
+Note: internal elememtal energy is ignored (e.g. chem. Reaction)
+Th net tranfer to the element in the x-dir.
+  → convetion from heat transfer
+Considering the conduction in all 3 directions:
+ (13)
+Finding Diff/ Eq. For Viscos Work ()
+ = shear force x area x corresponding vel.
+So viscos work ( or viscos disipation) in the x-dir:
+
+Viscos wotrk out is: 
+
+Considering all 3 directions:
+
+In Compact form:
+ (14)
+Practical form of Eq(14) where viscos losses are seperate is as follows:
+ (15)
+ → Viscos-dissipation term (essentially this is flow “losses”
+Where
+
+Only for Newtonian fluids
+ is always positive (due to all terms having powers of 2), which makes senses, as losses in a flow must be positie to comply with 2nd law of Thermodynamics
+Sub in Eqs. (13) & (15) into eq(12), cons. Of energy, and after simplification (note: , and utilizing the conservation of linear momentum:
+(16)
+Eq(16) is the general form of conservation of energy for a flow
+If we consider the flow in comprenible and 
+(1)
+dT Total diff. On T(x,y,z,t)
+ dissipation term (if the flow is very very slow, it can be ignored)
+How to solve above equations with 5 unknowns (i.e.  when we have 3 eqs.?
+Read Sec 4.6 of the book to learn about various BC
+Eq. of state (idel gas law)
+Inlet/outlet info. V, p
+Solid wall→ no slip no. Temp. Jump
+Free interface: vertical vel (w) equity & mech. Force balance at the interface ( ) ; or thermal conditions, e.g. equal temp. or equal thermal flux.
+Sec 4.10 (For now we will skip Sec 4.7-4.9):
+Read sec 4.10 for analytically solving some special cases here we deal with the example of a Laminin flow within a pipe.
+Ex: What is the vel. Profile in the pipe shown. Assume the flow is laminin, and fully developed. Neglect the gravity and assume the flow is steady and incompressible. As this is a straight pipe flow can be considered axisymmetric.
+
+So!
+What co-ordinate system to use?
+Cyl.
+What does axial flow means?
+A flow that is fully developed is an axial flow 
+What does axial symmetry mean?
+
+What does it mean that flow is incompressible & =constant
+Let’s start with continuity (cons. Of mass):  in cyl. Coordinates
+(see Sec 4.2) has the form
+
+
+1st term→ incompressible
+and → Zero, since flow was fully developed, i.e. arial flow
+ where t-steady,  axisymmetric, z – fully developed
+
+Writing N.S. eq. in Cyl. Co-ordinate r-component:
+
+
+ +  (r
+=0 no gravity
+
+
+No flow in  dire => no eqs. In  dire. since
+Z-dir:
+
+→ steady flow
+=0 no gravity
+
+
+Integrated w.r.f. r twice:
+
+→ to avoid singularity ar r=0   finite value | =0. R=0 –>centaline of pipr, 2nd BC
+1st BC no slip at r=R, R=pipe radius
+
+Using the 2 BC
+ 
+Eq. of a paraboloid
+
+Note: Knowing vel. Profile allows one to find: 
+Flow Rate (Q), i.e.  where 
+Shear at the wall (Twall): Twall=     ; L= length of pipe segment prev. Drop along z-dir., for pipe length L.
+
+Fig. E6.3.1 shows a coating experiment involving a flat photographic film that is being pulled up from a processing bath by rollers with a steady velocity U at an angle   to the horizontal. As the film leaves the bath, it entrains some liquid, and in this particular experiment it has reached the stage where: (a) the velocity of the liquid in contact with the film is , (b) the thickness of the liquid is constant at a value , and (c) there is no net flow being pulled up by the film as is falling back by gravity). (Clearly, if the film were  to retain a permanent coating, a net upwards flow of liquid would be needed.)
+
+Note: Since there is no temp change (energy or work in/out), then we don’t concern ourselves with the energy eq. (also because we’re not concerned with losses (term ins eq.)
+
+Assumptions:
+Newtonian fluid, steady flow, =constant
+No variation of vel. In 2 dir. => 2D flow
+No rotation => no worries for conservation angular momentum => continuity linear momentum
+Continuity- Linear 2D Momentum: 
+
+
+
+Note: Orientation being x or y axis for and 
+Note: looking from top and side views of the system +> u>>v or w, so we can neglect v & w or v=w=0
+Momentum:
+
+
+Continuity   note v=0
+
+BC to solve
+y=0, u=U
+all free surface shear force(Txy) is zero, mechanical balance:
+
+Since we have a flat interface with the dir. At => P=0; gauge at the moment
+
+Solve above PDF with the 3 BC:
+Answer:
+
+
+Note: N.S eqs. Are complicated, so to find analytical solution, either if the phys. Y problem allows, simplification, e.g. prob. Above, or use of math tech should be done to find solution Otherwise CFD is needed
+
+Irrotation flow and vorticity
+These concepts are math. Tech. to help with finding analytical sol. To POE of NS; see videos
+
+If a fluid element does not have an angular vel. Around its center, this flow is called irrotational
+
+To do diff. analysis : how irrotationality can be shown mathematically?
+
+Avg. rotational vel. Of element around 2 axis (
+ – the sign of operation is the direction of notation 9see fig. above)
+
+By trigonometry, it can be shown
+
+Then
+
+For rotation around x & y it can be shown:
+
+
+ curl 
+Vorticity-> 
+If  or zero vorticity, then flow is irrotational (18)
+
+What is this good for?
+We have a math tool to solve for flow field (get …)
+This tool is best suited for 2D flows where there is no work or heat involved since there is no work or heat, I can be concerned with conservation of man & momentum:
+For an incompressible flow, where flow is steady: 
+   (i)
+   (ii)
+
+Consider a function exists ( that one can write:
+ (iii)
+
+Then by inspection of eq.(iii) vis. a. vis. eq(i):
+ (19)
+
+If one taken the curl of momentum Eq. (i.e. , and use  definition from eq. 19, then:
+ (iv)
+Eq (iv) is a 4th order PDE that needs 4BC
+Aside from driving Eq. (iv) 
+Special Case!
+Irrotational flow => x =0  in 2D    
+Eq iv) now simplified to a 2nd order PDE, which needs 2 BC only
+BC (at far field _-> very much away from the object)
+Interestingly, represents stream lines in a physical sense, hence it is called a stream function
+	Definition of stream line  satisfy  
+       It can show that with  as flow rate and  scalar
+OR  if we write the above same formulation but keep the  in the eq. (i)
+Therefore the concept of stream function() works for both compressible and incompressible flows, but not for 3D or unsteady flow
+
+Ex. If a stream function exists for vel. Field as follows, find it, plot it, and interpret it.
+
+
+Looking at vel. Functions  flow is 2D and it’s independent of time -> steady => chance  exists
+
+To find  -> 
+
+
+ 
+ 

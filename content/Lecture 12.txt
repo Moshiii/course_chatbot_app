@@ -1,0 +1,43 @@
+Lecture 12 Notes
+Chapter 11:
+
+Goals for today - Lecture 12 
+1. What is a pump and its applications 
+2. Discussion of different types of pumps and their characteristics 
+3. Best Efficient Operating point (BEP) for pumps 
+
+Sec 11.1
+Pumps:
+Positive Displacement Pump (PDP)- pushes the liquid by compressing it against a cavity, with an opening suddenly becoming available.
+Rotodynamic Pump(RP): Pushes the fluid by adding momentum to it by means of a fast moving blade
+PDP advantage: 
+works with any liquid (viscos or not, Newtonian or not)
+has constant (almost) flow for any system head
+PDP disadvantage:
+usually low Q
+pulsating/unsteady flow (unless a settlement tank is used)
+RD advantage:
+steady flow
+high flow rates compared to PDP
+variable flow depending on the system head
+RD diasvantages:
+Needs “priming” unlike PDP. Priming means that the pump needs to be filled with liquid to start, i,e, to suck liquid
+Moderate pressure
+High viscous liquids (or shear thickening) will degrade the pump performance, significantly.
+
+Types of Pump Video:
+
+
+Video for working Centrifugal Pump:
+
+
+Good video to watch to understand how different pumps work!
+
+
+See Figs. 11.1-11.3 & 11.6 & 11.7 & 11.3
+
+Fig 11.6 7 11.7:
+Pump curves are strictly for a given fluid
+At low  Const. (but pump is inefficient)
+Max  is at  0.6
+Max  point is called BEP (Best Efficiency point) and one should aim for running the pump at BED.

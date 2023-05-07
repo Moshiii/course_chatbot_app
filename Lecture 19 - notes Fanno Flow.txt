@@ -1,0 +1,150 @@
+Chapter 9
+Lecture 19 – Goals for today’s class
+Review of the thermodynamic properties for compressible gasses (must watch the video posted below)
+Application of Compressible flow
+Introduction to compressible duct flow with friction
+Derivation of the relationships for compressible flow stated in 3
+Solving a problem
+
+Watch this video from Min 1:00 to 51:00 to remind yourself of the preliminaries from Thermodynamics you need for Compressible flow:
+
+
+The notes below do not include the material related to the review that was provided through YouTube videos above. Make sure that for that purpose you read sections 9.1 to 9.3 of the Whites textbook.
+
+Section 9.7 – Compressible Duct Flow with Friction
+Note that for compressible fluids, pressure is not simply the mechanical normal stress, but a well-defined thermodynamic variable. Therefore, the drop in pressure is caused not only by the friction of the fluid, but also by the change in the thermal state.
+
+v + dv à no change in cross section, no change in mass flow à so other properties must change (e.g., ρ, T, P) to have v form inlet to change to v + dv in outlet.
+
+Let’s make these assumptions to find analytical solutions:
+Steady 1D flow
+No shaft work & potential changes
+Wall shear stress is correlated by Dancy friction factor (f), i.e.,
+
+Adiabatic Flow
+Considering the conservation laws: 
+
+ à appearing become of compressibility.
+
+
+dx à element length (see Figure above)
+x-momentum energy , where 
+despite being adiabatic, temperature can change à 
+
+
+In above 3 equations we have P, ρ, T, v, ; Assumption 3 above given a 4th equation AND if we restrict the analysis to gases, then ideal gas law PV=nRT can be read.
+
+Integrating/solving above 5 equations will give:
+Equations 9.64 a-e
+
+
+
+
+
+
+This type of flow is called Fanno flow!
+The term (1-) appears in above equations, so depending on whether  (supersonic),  (sub-sonic), the flow properties vary diff., see table:
+
+ à always decrease as there is losses () at the wall
+Entropy à S always increases otherwise violation of 2nd law of thermodynamics
+
+
+Where do you see Fanno flow?
+Emptying of pressured container through a relatively short tube, exhaust system of an internal combustion engine, compressed air systems, historically it raised from the need to explain the steam flow in turbines.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sonic Properties
+
+
+
+
+
+From 9.14 one will see that
+S became  at 
+Since flow is non-isentropic (frictionless losses);  decreases (see table above), so ref. properties should be sonic properties
+i.e.,  
+So, integrating between o and  (length of tube when ) of say Eq. 9.64e
+
+Where,  = Average f between o & 
+	D à can use 
+	K à gas constant (air h = 1.4)
+
+Table B.3 has numeric values of  for various .
+If  does not reach 1, i.e., the dual is short. Then eq. (2) can be used:
+
+Find ‘f’ from Moody diagram for Average  &  values.
+
+
+
+Note 1: see ex. 9.10
+Note 2: Equations 9.68a – 9.68d in the textbook give relationships for , etc. on a function of  & K, similar to Equation (1) above.
+The values, e.g., for Pressure, between two points, can be found using:
+
+Where , etc. can be found from equations 9.68 or table B3 in appendix of textbook.
+
+Lecture 20 – Goals for today’s class
+Adiabatic flow cont’d: Chocking of compressible flow in a duct due to friction
+Isothermal Compressible flow with friction in a duct
+Solving a problem
+
+
+Chocking Due to Friction
+What happens if the length of the duct is longer than  for a given Ma at the inlet?
+Subsonic: the inlet vel adjusts down so at exit , 
+This means the length can determine the main flow rate
+Supersonic: A shock will appear at the “right place”, to turn flow subsonic, and hence at exit 
+
+
+Note: Increasing the Ma at inlet, beings the shock closer to the inlet; think of why?
+Hint: Length of duct to have at exit for a “subsonic” flow
+
+Note: Minor losses for compressible flow are calculated as:
+
+ : pressure after the fitting
+: minor loss coefficient for comp flow (an approx. might use the k values from sec 6.9. of test) (3)
+V : vel after the fitting
+
+Isothermal flow with Friction:
+For very long ducts, e.g natural gas lines, the flow takes the state of isothermal rather than adiabatic. In this case, the conservation of energy e.q is replaced by T = const or dT = 0 in the set of eqs given for adiabatic flow
+
+It can be shown that
+	(4)
+
+Two differences between the isothermal and adiabatic frictional flow:
+In isothermal, the flow behavior does not depend on inlet Ma being sub- or super-sonic (I.e no more term)
+The Lmax is not zero when Ma=0, but according to the above equation when . So the limiting Ma at the exit will be  (0.845 for air) for isothermal flow
+
+What if 
+Similar to adiabatic flow, if inlet is subsonic, the Ma at inlet will decrease, so exit Ma is ; and if inlet is supersonic, then a shock at the “right place: will appear, so the exit Ma is still 
+Note: The ref properties will be values of etc at  (not ), I.e. 
+Some useful formulae for isothermal flow:
+	; 
+
+
+
+ : mass flux at inlet P1 or ext P2 (static pressure)
+
+Example:
+
+Flow should be treated as “isothermal” due to very long pipe!
+
+
+
+R for air = 287J/kg.k
+
+Now all value to use in Eq 5 above is known to find G
+
+
+

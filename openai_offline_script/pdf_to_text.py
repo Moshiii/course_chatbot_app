@@ -1,5 +1,6 @@
 import PyPDF2
 import json
+import os
 content = {}
 
 
@@ -28,15 +29,20 @@ def txt_to_text(txt_path, content):
     content[file_name] = page_text
     return content
 
-pdf_path = "C:\@code\course_chatbot_app\openai_offline_script\main_notes.pdf"
-content1 = pdf_to_text(pdf_path, content)
+def read_all_txt_files_in_folder(folder_path):
+    content_all={}
+    file_list = []
+    for file in os.listdir(folder_path):
+        if file.endswith(".txt"):
+            file_list.append(folder_path + file)
+    for f in file_list:
+        content = {}
+        content = txt_to_text(f, content)
+        content_all.update(content)
+    return content_all
 
-txt_path = "C:\@code\course_chatbot_app\openai_offline_script\syllabus.txt"
-content2 = txt_to_text(txt_path, content)
-
-#conbine content
-content = {**content1, **content2}
-
+folder_path = "C:\@code\course_chatbot_app\content\\"
+content_all = read_all_txt_files_in_folder(folder_path)
 
 with open('content.json', 'w') as f:
-    json.dump(content, f)
+    json.dump(content_all, f)

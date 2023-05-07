@@ -1,0 +1,175 @@
+Emperical Fluid Dynamics & Dimensional Analysis 
+(DA)
+Chapter 5 of F. White’s Fluid Mech Book
+Learning Goals:
+Introduction to empirical (experimental Fluids Dyn.)
+Let’s look at two experiments:
+Drop impact onto a surface
+Drop transfer between to surfaces
+How to construct Dimensionless numbers
+How to use Dimensionless numbers in:
+Planning for experiments
+Interpreting the data from experiments
+Similarity of Flow in Fluids Dynamics and its application
+Why Study Drop Impact on Surfaces
+ 
+
+
+
+
+
+
+
+Lubrication of big ship engines
+
+A drop impacting a dry solid surface under normal atmospheric conditions!
+
+T=0
+T = 0.3 ms
+T= 2.6 ms
+T = 6.6 ms
+T= 14.6 ms
+T =750 ms
+
+A drop on to solid dry isothermal surfaces
+
+
+
+
+
+
+Influence of Gas Pressure
+
+
+Surface roughness influence
+
+
+(silicon oil) 
+Wettability influence on drop impact 
+
+
+Isothermal Impacts of Newtonian drops
+
+
+
+Drop Impact parameters: how to reduce them 
+
+U,D, and time t
+
+We (inertial/superficial forces) 
+Oh (viscous / superficial forces) 
+Re (inertial viscous forces) 
+Example: atmospheric Water Drop 
+V = 50 M/S
+D = m
+We = 1700
+Oh = 0.03
+
+DA for Data Analysis/Interpretation
+
+Example of liquid bridge case for printing industry:
+
+Industrial Application 
+
+Other applications
+Dispensing of glue for packaging
+Electro wetting-assisted drop deposition
+Micromachined fountain-pen techniques
+
+
+In Nature: 
+Cat laps
+Liquid adhering to the dorsal side of the tongue tip is drawn upward, forming a liquid bridge. 
+
+Process of liquid transfer from one surface to another
+
+
+Typical process of liquid transfer
+Transfer ratio- 
+
+
+Governing parameters for the transfer ratio:
+Donor Surface: Teflon AF
+Acceptor surface: PMMA
+Stretching speed (U): 25 mm/s
+
+Donor surface: Teflon AF
+Acceptor surface: PMMA
+Stretching speed (U): 1mm/s
+
+
+Donor surface : Silicon
+Acceptor Surface: PMMA
+ Stretching speed: 1 mm/s
+
+
+What maybe parameters of interest?
+liquid viscosity
+Separation velocity of surfaces
+Surface tension of liquid
+Type of surfaces
+
+
+20 cSt silicone oil: 
+
+100 cSt silicone oil:
+
+Roles of liquid viscosity
+
+Four types of silicon oil transfer from Teflon AF to PEMA
+
+What nondimensional parameters we can use?
+Capillary number Ca (Ca = ) [viscos forces over surface tension forces]
+Transfer Ratio as Function of Lof (Ca)
+
+Effects of liquid surface tension
+
+
+Goals for today’s lecture – Lecture 10
+Introduction of 3rd way to study fluid dynamics, i.e., empirical studies
+Discussion of an experiment and parameters that can be involved
+How to handle many parameters tjat can be involved in an empirical study
+Dimensional Analysis as a way of interpreting data and managing experiment parameters in a study
+Chapter 5: Dimensional Analysis (DA) & Similarity
+DA id basically a way to reduce the numbers of variables to allow for planning on data interpretation in/from an experimental worK. 
+DA saves time and money, as we can reduce the number of experimental runs. Experimental work is an important part of F.D. as many cases are too complex in mission critical to use analytical or CFD methods (alone).
+Note: Read Sec. 5.1 & 5.2 \
+Sec. 5.3 The Pi Theorem
+We will use Ipsen method rather thanBuckingham method to do the DA. In DA we create non dimensional compound variables, out of dimensional variables. The non-dimensional compund varibales are called Pi (due to symbol - π). 
+If phenomenon (e.g. drag on airfoil) depends on “n” dimensional variables (e.g. velocity, density,etc), the DA reduces the problem to “K” dimenisonaless parameters (e.g. C_D & R_e).
+Generally n – k is equal to number of fundamental (or basic) dimensions (e.g. M,L,T, etc) something
+Do you know some non-dimensional variables?
+, ,  (specific heat)
+The non-dimensional varibales usually have or signify physical meaning, e.g.
+Re =  signify how much inertial forces should be longer than viscours forces to transmit turbulent flow.
+ (We #)
+, 
+Drag coefficient 
+How to use this information to make plans for experiments?
+How to use this information to interpreat data?
+
+
+Planning: should I worry about liquid surface tension when designing a channel flow?
+Channel dimensions: 30 x 20 xm and 2m long
+Flow velocity: 0.1 m/s
+Liquid: water or ethanol 
+Which # to use? We
+Inertia is N42 times more important than surface forces.
+What if the channel is angled (effect of gravity) ?
+So not important at all
+
+How about viscous forces?
+Not to worry about viscous forces , 
+What if the velocity B is reduced to 1mm/min -> ,  now vicous forces are more important.
+How about surface forces ?
+Surface forces are the King/Queen in µ channel.
+
+So such planning analysis will allow us to plan betetr; for a large channel surface tension will not be a design/experiment consideration, but for a micro-channel it should be!
+Once data is collected in an experiment, say rag force coefficient for a sphere or a cycle. Non-dimensional plot, allows a comprehensive representation of data; as seen in figure below, the plots are independent of the fluid used (e.g.,µ,), so it can be for air, water, oil, etc. No more rad for 3 plots for air, oil, water...
+
+
+Also, data interpretation in terms of e.g. forces, with a plot such as the one above can be made in general fashion (e.g. regardless of the type fo fluid); see encircled areas in the above plot where an increase inertoal forces leads to reduction of forces on the cycle or spherical body in any fluid flow ()
+
+
+How to make non-dimensional groups (π) or numbers. 
+
