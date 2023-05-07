@@ -31,7 +31,7 @@ def ask_with_wiki_search_on_question(query: str):
         ctx = ctx + " keyword: " + key + " keyword explain: " + context[key]
 
     prompt = "".join([
-        u"Answer the question with consideration of the following context, if context is irrelevent, answer based on your own understanding:\n\n"
+        u"Answer the question with consideration of the following context, If context is irrelevent, answer based on your own understanding:\n\n"
         u"context:" + ctx + u"\n\n"
         u"Q:"+query+u"\n\n"
         u"A:"])

@@ -69,7 +69,7 @@ def ask(question: str, embeddings, sources, filenames, pageindex):
     if len(ctx) == 0:
         return ""
     prompt = "".join([
-        u"Answer the question based on the following context:\n\n"
+        u"Answer the question based on the following context. If context is irrelevent, answer based on your own understanding:\n\n"
         u"context:" + ctx + u"\n\n"
         u"Q:"+question+u"\n\n"
         u"A:"])
