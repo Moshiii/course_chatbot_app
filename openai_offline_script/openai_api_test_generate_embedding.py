@@ -7,10 +7,8 @@ import tiktoken
 
 # Load the .env file
 load_dotenv()
-# openai.api_key = os.environ['OPENAI_API_KEY']
-openai.api_key = "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"
+openai.api_key = os.environ['OPENAI_API_KEY']
 EMBEDDING_MODEL = "text-embedding-ada-002"
-CONTEXT_TOKEN_LIMIT = 1024
 
 def get_token_count(string,model):
     # print("string: ", string)
@@ -62,7 +60,7 @@ for source in content.keys():
     #     content[source] = content[source][9:12]
     for idx, x in enumerate(content[source]):
         content[source][idx]["embedding"] = get_embedding(content[source][idx]["text"])
-        # get_embedding_quote(content[source][idx]["text"],"gpt-3.5-turbo")
+        get_embedding_quote(content[source][idx]["text"],"gpt-3.5-turbo")
 
 # save json file
 with open('content_update.json', 'w') as f:

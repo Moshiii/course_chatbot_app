@@ -9,7 +9,7 @@ from openai_offline_script import wikipedia_api_test
 load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 EMBEDDING_MODEL = "text-embedding-ada-002"
-CONTEXT_TOKEN_LIMIT = 3000
+CONTEXT_TOKEN_LIMIT = 5000
 
 
 def get_embedding(text: str, model: str = EMBEDDING_MODEL) -> list[float]:
@@ -29,7 +29,6 @@ def order_document_sections_by_query_similarity(query: str, embeddings) -> list[
     document_similarities = sorted([
         (vector_similarity(query_embedding, doc_embedding), doc_index) for doc_index, doc_embedding in enumerate(embeddings)
     ], reverse=True, key=lambda x: x[0])
-    # print("document_similarities",document_similarities)
     return document_similarities
 
 
@@ -64,7 +63,6 @@ def ask(question: str, embeddings, sources, filenames, pageindex):
             pageindex[candi[1]])+" file content:" + sources[candi[1]]
         if len(next) > CONTEXT_TOKEN_LIMIT:
             break
-        print("next", next)
         ctx = next
     if len(ctx) == 0:
         return ""
@@ -100,13 +98,11 @@ def ask_with_wiki_search_on_answer_with_context(messages):
 
     result_list = openai_api_test_key_word_extraction.extract_key_word_list(
         answer)
-    print(result_list)
     context = {}
     links = {}
     for x in result_list[:3]:
         title, url, summary, references = wikipedia_api_test.search_wiki_first_only(
             x)
-        print("link: ", url)
         context[title] = url
         links[title] = url
     answer += "\n\n"
@@ -142,7 +138,6 @@ def ask_with_wiki_search_on_question_with_context(messages):
     links = {}
     for x in result_list:
         title, url, summary, references = wikipedia_api_test.search_wiki(x)
-        print("link: ", url)
         context[title] = summary
         links[title] = url
 
@@ -160,7 +155,6 @@ if __name__ == "__main__":
 
     for source in content.keys():
         for idx, x in enumerate(content[source]):
-            print(x.keys())
             embeddings.append(x['embedding'])
             sources.append(x['text'])
             filenames.append(source)
@@ -168,4 +162,3 @@ if __name__ == "__main__":
 
     result = ask("What is cost function? can you give me an example",
                  embeddings, sources, filenames, pageindex)
-    print(result)
