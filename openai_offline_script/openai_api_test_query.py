@@ -60,7 +60,7 @@ def ask_with_syllabus_with_context(messages: str) -> str:
     return messages
 
 def ask_syllabus(question: str):
-    file_path = "content\MECH3202_outline_S23.txt"
+    file_path = "MECH3202_outline_S23.txt"
     with open(file_path, 'r') as f:
         content = f.read()
     prompt='this is the syllubus for a course. please read and answer the following questions. Please think carefully'
