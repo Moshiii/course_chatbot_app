@@ -127,6 +127,8 @@ def chat():
     elif content.contains("syllabus"):
         print("syllabus magic word detected")
         messages = openai_api_test_query.ask_with_syllabus_with_context(messages)
+    elif option == "None":
+        messages = openai_api_test_query.ask_with_context(messages)
     else:
         messages = openai_api_test_query.ask_with_context(messages)
     # messages = openai_api_test_chat.chat_with_context(messages)
