@@ -119,10 +119,14 @@ def test():
 def chat():
     messages = request.get_json(force=True)
     option = messages[-1]["option"]
+    content = messages[-1]["content"]
     if option == "Focus":
         messages = openai_api_test_query.ask_with_wiki_search_on_question_with_context(messages)
     elif option == "Explore":
         messages = openai_api_test_query.ask_with_wiki_search_on_answer_with_context(messages)
+    elif content.contains("syllabus"):
+        print("syllabus magic word detected")
+        messages = openai_api_test_query.ask_with_syllabus_with_context(messages)
     else:
         messages = openai_api_test_query.ask_with_context(messages)
     # messages = openai_api_test_chat.chat_with_context(messages)

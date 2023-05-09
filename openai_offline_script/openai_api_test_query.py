@@ -53,6 +53,23 @@ def ask_with_context(messages: str) -> str:
     messages.append({"role": "assistant", "content": answer})
     return messages
 
+def ask_with_syllabus_with_context(messages: str) -> str:
+    user_query = messages[-1]["content"]
+    answer = ask_syllabus(user_query)
+    messages.append({"role": "assistant", "content": answer})
+    return messages
+
+def ask_syllabus(question: str):
+    file_path = "C:\@code\course_chatbot_app\content\MECH3202_outline_S23.txt"
+    with open(file_path, 'r') as f:
+        content = f.read()
+    prompt='this is the syllubus for a course. please read and answer the following questions. Please think carefully'
+    prompt += content   
+    prompt += question
+
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+    return completion.choices[0].message.content
 
 def ask(question: str, embeddings, sources, filenames, pageindex):
     ordered_candidates = order_document_sections_by_query_similarity(

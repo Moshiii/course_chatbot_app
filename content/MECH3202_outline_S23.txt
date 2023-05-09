@@ -1,0 +1,235 @@
+MECH 3202   Fluid Dynamics
+York University 
+Course  Outline
+Summer Term - May 8 – Jun. 26, 2023
+
+Instructor:	A. Amirfazli	BRG 433E	   	alidad2@yorku.ca
+
+TAs 
+
+Taz 	Islam		tahzinul@yorku.ca
+Alireza K		@gmail.com
+
+Course description  
+This course introduces key concepts and methods in solving problems in fluid mechanics. Topics covered include: External flow; boundary layers; momentum theories; similitude; fluid friction, drag and lift; fluid friction in pipes and minor losses; fluid machineries; pipe networks; time permitting flow at high Reynolds numbers including shock waves. 
+
+Graduate Attributes-MECH 3202
+1- A knowledge base for engineering 
+2- Problem analysis
+
+Prerequisite: MECH 2202; and recommended enrollment in MECH3201
+
+Office Hrs: By appointment 	
+
+Course format
+All tutorials/classes are in person. Attendance by students is needed to succeed in this course.
+No recording of the sessions is provided, unless there is an exceptional asynchronous delivery of the materials. You will be notified through eClass for times the class will be asynchronous. 
+
+Tutorials: Tutorial sessions are opportunities to solve and learn about problems similar to what you will be tested, and also to learn about Computational Fluid Dynamics. It is also the time to work on your Infographics and get hints as how to complete them.  
+
+One must attend the designated Tutorial session as per one’s registration, with the exception of changing your session to the Friday Tutorial from other sessions.
+
+TUTR 01 R 9:30 2 hrs PSE  317 
+
+Lectures will start form May 8th, but tutorials will begin on May 11; no tutorials on the week of May 29th. 
+
+eClass: Check the site for MECH 3202 frequently for notices, assignments and all updates regarding this course (pay attention to the emails sent through this system).
+
+Text:	Fluid Mechanics, 8th ed (or other eds.), Frank. M. White, McGraw-Hill, 2016, ISBN: 978-0073398273. An electronic version of the book is available for a fee from eClass (make sure to opt out, if you do not want to have it from eClass site before deadline).
+
+Examples of useful texts:   Introduction to Fluid Mechanics, Fox and McDonald, 8th Ed, Philip J. Pritchard, Wiley, 2011. Fluid Mechanics Fundamentals and Applications, 3rd Ed, Yunus Cengel, John Cimbala, James W. Nilsson, Susan Riedel, McGraw-Hill, 2013, Any other classical Fluid Dyn./Mechanics is also fine. Also watch: learnfluidmechanics.org
+
+Course Evaluation
+
+Evaluation Scheme:	Five Assignments:		10%  
+				CFD assignment		8%
+				Concept Videos 		5% 
+				Three Infographics	9% (3% each)
+				Two Concept Maps		8% (4% each)
+				Two Quizzes: 		10% (5% each)
+				Midterm			20%
+				Final:			30%
+                        Total:			100%
+
+1- EXAMINATIONS
+Examination Dates:	Quiz 1: May 17th    (materials to cover: May 8- 1st session of May 15 inclusive)  
+				Midterm Jun. 4th   (materials to cover: May 8- May 24 inclusive)  
+				Quiz 2: Jun 14th    (materials to cover: Jun 5- 1st session of Jun 12 inclusive)  
+				Final: TBD    	     (materials to cover: all)                        
+	
+All examinations will be in person; quiz and midterm will be during class hours  and in-class
+			
+Calculators:	Only approved calculators of non-communicating type should be used during examinations.
+
+The quiz and midterm will be closed book, however, a formula sheet may be available. Also, if necessary, tables and graphs for material properties etc. will be given. There will be no re-write quiz/midterm for excused absence; the mark of the missed quiz/midterm will be spread over other exams (maximum of one quiz/midterm can be missed with a valid reason).
+
+Final exam will cover all the material presented in the course, and it will be OPEN BOOK.
+
+For quizzes, midterm, and final exam no computer and online resources (including apps, websites, etc.) are allowed to aid with solving problems. All communication devices or any web enabled device must be switched off, solution aids are not allowed. All problems must be solved only by the individual student without receiving any aid from anyone, or in any form.
+
+2- ASSIGNMENTS
+
+1. Assignments consist of problem sets relevant to the topics discussed in the class.
+2. A Copy of the assignment solutions must be uploaded to the course website no later than 11:59pm on the due date to receive credit. 
+3. Late assignments will not receive credit.
+4. Marked assignments normally will be returned 7 days after its due date. Please feel free to discuss any points you wish regarding your assignments with your TA/instructor.
+5. See the calendar for all dates related to the assignments.
+6. CFD mini-project: A computational Fluid dynamics (CFD) mini-project will be given on June 8th. This mini-project is due on June 27, 2023.
+7. Special instructions for CFD and Video assignments will be provided on eClass.
+8. Infographics and concept maps will be marked as well (see course calendar for deadlines).
+	
+Course Learning Outcomes: After finishing the course successfully, the student shall:
+
+1. Identify the fundamental kinematics of a fluid element (e.g., pathlines, streaklines, streamlines, and flow regimes: laminar & turbulent) in fluid flow. 
+2. Recognize the boundary layer concept and apply it to compute the lift, drag, and moments in inviscid and steady state flows acting on simple profiles.
+3. Apply dimensional analysis to analyze fluid dynamics in flow problems. 
+4. Employ the conservation principles of mass, linear momentum, and energy to develop models that describe different types of fluid flow. 
+5. Describe the performance characteristics of pumps, and/or turbines in different configurations in order to select the appropriate ones in given engineering applications.
+
+Ethics:	Student code of conduct shall be forced to its full extent. The York University is committed to the highest standards of academic integrity and honesty. Students are expected to be familiar with these standards regarding academic honesty and to uphold the policies of the University in this respect. Students are particularly urged to familiarize themselves with the provisions of the Code of Student Rights & Responsibilities (see www.yorku.ca/oscr/codeofrr.html) and avoid any behavior which could potentially result in suspicions of cheating, plagiarism, misrepresentation of facts and/or participation in an offence. Academic dishonesty is a serious offence and can result in suspension or expulsion from the University. 
+* Recording of lectures/seminars is permitted only with the prior written consent of the instructor/guest speaker or if recording is part of an approved accommodation plan.
+
+NETiquette
+
+In all online communications (e.g., email, online discussion, or other forms of online communications), please consider the guidelines from the Core Rules of Netiquette by Virginia Shea (http://www.albion.com/netiquette/corerules.html). Sometimes, online behaviour can appear to be inappropriate or disrespectful that it requires attention and follow up. In this case, please make sure you let your instructor know immediately so that the right resources can be identified to help.
+
+Format Requirements for written work
+Your written work must contain the following parts: (1) Title, (2) name and student ID  (3) page number, (4) date, and (5) body of the text with appropriate subheadings, if needed. 
+1. Use Appendices as needed to keep the main text and main figures focused to roughly 8 pages
+2. Line spacing – 1.5; font – Arial, size 11.
+3. References (if any) should be in standard format given below.
+o References should be indicated by number(s) in square brackets in line with the text.  References should be numbered in the order in which they appear in the text.
+o Examples for formatting references:
+[1] John AB, Wilson BC, Smith CD.  The method of referencing.  Journal of Energy 2006; 100(1):51-61.
+[2] Bird DE, Kumar EF.  The concept of energy planning.  7th ed. Edmonton, Alberta, Canada: Pearson; 2006.
+      [3] Dravid R, John AB, Lawson BC. The art of modeling. Available from www.modeling.ca (accessed on May 1, 2012).
+4. If uploading your written work to course website you must name the file using the following syntax: Name _final-rpt_Mech3202.doc (acceptable formats are: *.doc or *.docx)     for example:   Jane_Doe- Final-rpt-_Mech3202.doc
+
+AI Prof. Assistant
+
+Visit “Profanswers.com” to receive help from AI class assistant 24/7. For details see eClass.
+Course Calendar
+
+The course calendar provides the approximate dates for the topics to be covered; there may be some deviations between dates and topics to be covered.
+
+The dates for assignments and all other activities are firm and exact.
+MAY 2023
+
+Week 1
+Classes begin
+Introductions to course
+Survey of background
+Intro. to viscosity
+Diffusion of momentum as per viscosity
+Non-Newtonian Fluids
+Approaches in study of fluid dynamics
+Eularian and Lagrangian frames of ref. 
+RTT
+Momentum deficit
+Tutorial 9:30
+
+Assign 1 due
+Infographics 1
+
+
+Week 2
+Drive Bernoulli Eqs. (unsteady and classical form RTT)
+Differential approach to Fluid Mech. (conservation laws)
+
+
+Substitute – lecturer
+Quiz – 1
+Case study 1
+Derivation of fundamental laws over an element
+Review game 1
+Tutorial 9:30
+
+Assign 2 due
+
+Week 3
+Victoria day – no class
+
+Differential approach to Fluid Mech.  cont’d
+irrotational flow/stream functions
+Tutorial 9:30
+
+Infographics 2
+No class – break
+No class – break
+Infographics 3
+
+JUNE 2023
+
+Week 4
+Mid-term
+Application of stream functions – case study
+Potential flow
+
+
+CFD
+Flow visualization
+Intro to experimental approaches
+Review Game 2
+Tutorial 9:30
+CFD mini-project assigned
+
+Assign 3 due
+Concept map for differential approach
+
+Week 5
+Experimental approaches in Fluid Dynamics
+DA cont’d & application for Pumps as relates to DA
+
+
+Quiz – 2
+Pumps classification & characteristics
+Tutorial 9:30
+
+Assign 4 due
+Video assignment 
+
+Week 6
+External flow  
+
+Lift
+Drag
+Tutorial 9:30
+Make up for last day of class 9:30-1:00 pm
+Compressible flow
+Review  game 3
+Assign 5 due
+Concept map for external flow
+
+Last day of class – no class
+
+CFD – mini-Project due
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6
+
+
+3  of 5
+
+
+

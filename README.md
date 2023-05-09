@@ -65,6 +65,14 @@ https://discord.com/developers/applications
 7. update group id in https://github.com/Moshiii/course_chatbot_app/blob/main/app.py#L28 with server id
 
 
+
+## todo
+syllbus
+refuse to answer problem
+domain name
+pdf page
+
+
 ## query dynamics:
 
 
