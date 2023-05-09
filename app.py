@@ -124,7 +124,7 @@ def chat():
         messages = openai_api_test_query.ask_with_wiki_search_on_question_with_context(messages)
     elif option == "Explore":
         messages = openai_api_test_query.ask_with_wiki_search_on_answer_with_context(messages)
-    elif content.contains("syllabus"):
+    elif "syllabus" in content.lower():
         print("syllabus magic word detected")
         messages = openai_api_test_query.ask_with_syllabus_with_context(messages)
     elif option == "None":

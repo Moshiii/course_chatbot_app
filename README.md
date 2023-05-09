@@ -64,7 +64,10 @@ https://discord.com/developers/applications
 6. update CLIENT_ID, CLIENT_SECRET in https://github.com/Moshiii/course_chatbot_app/blob/main/.env
 7. update group id in https://github.com/Moshiii/course_chatbot_app/blob/main/app.py#L28 with server id
 
-
+## frontend deployment:
+npm run build之后 用winscp copy dist 到 ec2 /var/tmp底下
+然后进入aws console，ssh到 ec2
+cd /usr/share/nginx/html/ && sudo rm -rf dist/ && sudo cp -r /var/tmp/dist/ .
 
 ## todo
 syllbus
