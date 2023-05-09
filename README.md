@@ -53,6 +53,8 @@ sudo journalctl -u chatbot.service
 
 
 
+
+
 # discord setup
 
 https://discord.com/developers/applications
