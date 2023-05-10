@@ -51,7 +51,7 @@ def ask_with_context(messages: str) -> str:
     embeddings, sources, filenames, pageindex = load_embeddings()
 
     user_query = messages[-1]["content"]
-    answer = ask(user_query, embeddings, sources, filenames, pageindex)
+    answer = ask(user_query, messages, embeddings, sources, filenames, pageindex)
     messages.append({"role": "assistant", "content": answer})
     return messages
 
