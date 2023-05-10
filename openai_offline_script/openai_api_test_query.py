@@ -93,6 +93,11 @@ def ask(question: str,messages, embeddings, sources, filenames, pageindex):
     prompt += "Q:" + question + "\n\n"
     prompt += "A:"
     messages.append({"role": "user", "content": prompt})
+    # remove option attribute for each message
+    for message in messages:
+        if "option" in message:
+            del message["option"]
+            
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", messages=messages)
     return completion.choices[0].message.content
