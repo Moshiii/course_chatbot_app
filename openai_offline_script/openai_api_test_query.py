@@ -19,10 +19,8 @@ def get_embedding(text: str, model: str = EMBEDDING_MODEL) -> list[float]:
     )
     return result["data"][0]["embedding"]
 
-
 def vector_similarity(x: list[float], y: list[float]) -> float:
     return np.dot(np.array(x), np.array(y))
-
 
 def order_document_sections_by_query_similarity(query: str, embeddings) -> list[(float, (str, str))]:
     query_embedding = get_embedding(query)
@@ -32,8 +30,7 @@ def order_document_sections_by_query_similarity(query: str, embeddings) -> list[
     return document_similarities
 
 
-def ask_with_context(messages: str) -> str:
-
+def load_embeddings():
     embeddings = []
     sources = []
     filenames = []
@@ -47,6 +44,11 @@ def ask_with_context(messages: str) -> str:
             sources.append(x['text'])
             filenames.append(source)
             pageindex.append(idx)
+    return embeddings, sources, filenames, pageindex
+
+def ask_with_context(messages: str) -> str:
+
+    embeddings, sources, filenames, pageindex = load_embeddings()
 
     user_query = messages[-1]["content"]
     answer = ask(user_query, embeddings, sources, filenames, pageindex)
@@ -63,7 +65,7 @@ def ask_syllabus(question: str):
     file_path = "MECH3202_outline_S23.txt"
     with open(file_path, 'r', encoding='ISO-8859-1') as f:
         content = f.read()
-    prompt='this is the syllubus for a course. please read and answer the following questions. Please think carefully'
+    prompt='this is the syllubus for a course. please read and answer the following questions. Please think carefully:'
     prompt += content   
     prompt += question
 
@@ -71,9 +73,8 @@ def ask_syllabus(question: str):
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
     return completion.choices[0].message.content
 
-def ask(question: str, embeddings, sources, filenames, pageindex):
-    ordered_candidates = order_document_sections_by_query_similarity(
-        question, embeddings)
+def get_context(question: str, embeddings, sources, filenames, pageindex):
+    ordered_candidates = order_document_sections_by_query_similarity(question, embeddings)
     ctx = ""
     for candi in ordered_candidates:
         next = ctx + " " + "file name: "+filenames[candi[1]]+" page index: "+str(
@@ -83,35 +84,26 @@ def ask(question: str, embeddings, sources, filenames, pageindex):
         ctx = next
     if len(ctx) == 0:
         return ""
-    prompt = "".join([
-        u"Answer the question based on the following context. If context is irrelevent, answer based on your own understanding:\n\n"
-        u"context:" + ctx + u"\n\n"
-        u"Q:"+question+u"\n\n"
-        u"A:"])
+    return ctx
 
+def ask(question: str,messages, embeddings, sources, filenames, pageindex):
+    ctx = get_context(question, embeddings, sources, filenames, pageindex)
+    prompt ="you are a professor with extensive knowledge. Answer the question based on the following context. Please think carefully, ignore the irrelevent context and answer the question:\n\n"
+    prompt += "context:" + ctx + "\n\n"
+    prompt += "Q:" + question + "\n\n"
+    prompt += "A:"
+    messages.append({"role": "user", "content": prompt})
     completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+        model="gpt-3.5-turbo", messages=messages)
     return completion.choices[0].message.content
 
 
 def ask_with_wiki_search_on_answer_with_context(messages):
 
-    embeddings = []
-    sources = []
-    filenames = []
-    pageindex = []
-    with open('content_update.json', 'r') as f:
-        content = json.load(f)
-
-    for source in content.keys():
-        for idx, x in enumerate(content[source]):
-            embeddings.append(x['embedding'])
-            sources.append(x['text'])
-            filenames.append(source)
-            pageindex.append(idx)
+    embeddings, sources, filenames, pageindex = load_embeddings()
 
     user_query = messages[-1]["content"]
-    answer = ask(user_query, embeddings, sources, filenames, pageindex)
+    answer = ask(user_query,messages, embeddings, sources, filenames, pageindex)
 
     result_list = openai_api_test_key_word_extraction.extract_key_word_list(
         answer)
@@ -132,19 +124,7 @@ def ask_with_wiki_search_on_answer_with_context(messages):
 
 def ask_with_wiki_search_on_question_with_context(messages):
 
-    embeddings = []
-    sources = []
-    filenames = []
-    pageindex = []
-    with open('content_update.json', 'r') as f:
-        content = json.load(f)
-
-    for source in content.keys():
-        for idx, x in enumerate(content[source]):
-            embeddings.append(x['embedding'])
-            sources.append(x['text'])
-            filenames.append(source)
-            pageindex.append(idx)
+    embeddings, sources, filenames, pageindex = load_embeddings()
 
     user_query = messages[-1]["content"]
     answer = ask(user_query, embeddings, sources, filenames, pageindex)
