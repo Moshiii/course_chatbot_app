@@ -127,7 +127,7 @@ def ask_with_wiki_search_on_question_with_context(messages):
     embeddings, sources, filenames, pageindex = load_embeddings()
 
     user_query = messages[-1]["content"]
-    answer = ask(user_query, embeddings, sources, filenames, pageindex)
+    answer = ask(user_query, messages, embeddings, sources, filenames, pageindex)
 
     result_list = openai_api_test_key_word_extraction.extract_key_word_list(
         user_query)
