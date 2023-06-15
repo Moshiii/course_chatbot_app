@@ -72,10 +72,11 @@ npm run build之后 用winscp copy dist 到 ec2 /var/tmp底下
 cd /usr/share/nginx/html/ && sudo rm -rf dist/ && sudo cp -r /var/tmp/dist/ .
 
 ## todo
-syllbus
-refuse to answer problem
-domain name
-pdf page
+notes about syllabus prompt
+feedback button
+log all conversation
+
+
 
 
 ## query dynamics:
