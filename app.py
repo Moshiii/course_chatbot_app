@@ -26,7 +26,8 @@ api_base_url = 'https://discord.com/api'
 revoke_url = 'https://discord.com/api/oauth2/token/revoke'
 scope = 'identify email guilds'
 # guild_id = '830604066660286464' Allen's group
-guild_id = '1107825060653314111' #prof's group'
+# guild_id =   '1107825060653314111' #prof's group'
+guild_id =   '1107825060015767552' #prof's group'
 openai.api_key = os.environ['OPENAI_API_KEY']
 front_end_url = os.environ['FRONT_END_URL']
 #  disable output buffering in Flask
