@@ -7,8 +7,8 @@ import openai
 import os
 import logging
 from openai_offline_script import openai_api_test_query
-from openai_offline_script import openai_api_test_chat
-from openai_offline_script import openai_api_test_query_wiki_context
+# from openai_offline_script import openai_api_test_chat
+# from openai_offline_script import openai_api_test_query_wiki_context
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -37,7 +37,7 @@ def discord_token_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         auth_header = request.headers.get('Authorization')
-        if auth_header and auth_header.startswith('Bearer '):
+        if auth_header and auth_header.startswith('Bearer'):
             bearer_token = auth_header[7:]
             discord = OAuth2Session(client_id, token={'access_token': bearer_token, 'token_type': 'Bearer'})
             user_data = discord.get(api_base_url + '/users/@me').json()
