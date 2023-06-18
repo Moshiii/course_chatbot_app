@@ -7,8 +7,8 @@ import openai
 import os
 import logging
 from openai_offline_script import openai_api_test_query
-from openai_offline_script import openai_api_test_chat
-from openai_offline_script import openai_api_test_query_wiki_context
+# from openai_offline_script import openai_api_test_chat
+# from openai_offline_script import openai_api_test_query_wiki_context
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
