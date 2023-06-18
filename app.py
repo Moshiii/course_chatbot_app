@@ -37,7 +37,7 @@ def discord_token_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         auth_header = request.headers.get('Authorization')
-        if auth_header and auth_header.startswith('Bearer '):
+        if auth_header and auth_header.startswith('Bearer'):
             bearer_token = auth_header[7:]
             discord = OAuth2Session(client_id, token={'access_token': bearer_token, 'token_type': 'Bearer'})
             user_data = discord.get(api_base_url + '/users/@me').json()
